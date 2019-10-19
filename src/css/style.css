@@ -1,0 +1,29 @@
+.sidebar {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 16px;
+}
+
+.sidebar a {
+    padding: 50px 50px;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+
+}
+
+.main {
+    margin-left: 160px;
+    padding: 0px 10px;
+}
+
+#memory{
+    background: url("https://image.flaticon.com/icons/svg/898/898756.svg");
+}
+
+#chat{
+    background: url("https://image.flaticon.com/icons/svg/1077/1077909.svg");
+}

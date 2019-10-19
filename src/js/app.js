@@ -1,1 +1,3 @@
-console.log('Hello World!')
+import test from './window.js';
+
+new test();
