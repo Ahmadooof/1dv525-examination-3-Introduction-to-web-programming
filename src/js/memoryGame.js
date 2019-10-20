@@ -1,5 +1,4 @@
 export default class memoryGame {
-
   constructor (rows, columns, container) {
     this.container = document.getElementById(container)
     this.template = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild
@@ -15,12 +14,11 @@ export default class memoryGame {
     let lastTile
     let pairs = 0
     let tries = 0
-
     this.tiles.forEach(function (tile, index) {
       const a = document.importNode(template.firstElementChild, true)
       div.appendChild(a)
       a.addEventListener('click', function (event) {
-        let img = event.target.nodeName === 'IMG' ? event.target : event.target.firstElementChild
+        const img = event.target.nodeName === 'IMG' ? event.target : event.target.firstElementChild
         turnTile(tile, index, img)
       })
 
@@ -32,7 +30,6 @@ export default class memoryGame {
         if (!turn1) {
           turn1 = img
           lastTile = tile
-          return
         } else {
           if (img === turn1) {
             return
@@ -59,9 +56,7 @@ export default class memoryGame {
               turn1 = null
               turn2 = null
             }, 500)
-
           }
-
         }
       }
 
@@ -74,20 +69,18 @@ export default class memoryGame {
 
   shuffleArray (rows, columns) {
     let i
-    let arrayShuffle = []
+    const arrayShuffle = []
 
     for (i = 1; i <= (rows * columns) / 2; i++) {
       arrayShuffle.push(i)
       arrayShuffle.push(i)
     }
-
     for (let j = arrayShuffle.length - 1; j > 0; j--) {
-      let number = Math.floor(Math.random() * (j + 1))
-      let temp = arrayShuffle[j]
+      const number = Math.floor(Math.random() * (j + 1))
+      const temp = arrayShuffle[j]
       arrayShuffle[j] = arrayShuffle[number]
       arrayShuffle[number] = temp
     }
     return arrayShuffle
   }
-
 }

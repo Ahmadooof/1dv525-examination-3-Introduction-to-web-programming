@@ -1,3 +1,4 @@
-import memoryGame from './memoryGame.js';
+import MemoryGame from './memoryGame.js'
 
-new memoryGame(2,2,'memoryContainer');
+const game = new MemoryGame(4, 4, 'memoryContainer')
+console.log(game)
