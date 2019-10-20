@@ -1,9 +1,8 @@
 .sidebar {
     height: 100%;
+    float: left;
     width: 100px;
-    position: fixed;
-    top: 0;
-    left: 5;
+    left: 5px;
     padding-top: 16px;
 }
 
@@ -32,4 +31,12 @@
 #sokoban{
     background: url("https://image.flaticon.com/icons/svg/262/262545.svg");
     margin-top: 30px;
+}
+
+#memoryContainer{
+    margin-left: 200px;
+}
+
+#memoryContainer img {
+    width: 60px;
 }
