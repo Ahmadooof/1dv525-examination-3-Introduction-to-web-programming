@@ -38,6 +38,10 @@ a{
     margin-left: 200px;
 }
 
-#memoryContainer img {
+.memory img {
     width: 60px;
+}
+
+.memory .removed{
+    visibility: hidden;
 }

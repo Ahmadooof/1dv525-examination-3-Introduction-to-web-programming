@@ -3,53 +3,71 @@ export default class memoryGame {
   constructor (rows, columns, container) {
     this.container = document.getElementById(container)
     this.template = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild
+    this.div = document.importNode(this.template, false)
     this.tiles = this.shuffleArray(rows, columns)
-    this.createImages(rows, columns, this.template, this.container)
+    this.createImages(rows, columns, this.template, this.div)
+    this.container.appendChild(this.div)
   }
 
-  createImages (rows, columns, template, container) {
+  createImages (rows, columns, template, div) {
     let turn1
     let turn2
     let lastTile
+    let pairs = 0
+    let tries = 0
+
     this.tiles.forEach(function (tile, index) {
-      const a = document.importNode(template, true)
-      container.appendChild(a)
+      const a = document.importNode(template.firstElementChild, true)
+      div.appendChild(a)
       a.addEventListener('click', function (event) {
         let img = event.target.nodeName === 'IMG' ? event.target : event.target.firstElementChild
         turnTile(tile, index, img)
       })
 
       function turnTile (tile, index, img) {
-
-        console.log(tile)
-        console.log(index)
-        console.log(img)
-        if(turn2){
+        if (turn2) {
           return
         }
         img.src = 'image/memoryGame/' + tile + '.png'
-
-
         if (!turn1) {
           turn1 = img
           lastTile = tile
           return
         } else {
-          if(img === turn1){
-            return;
+          if (img === turn1) {
+            return
           }
-          turn2 = img;
+          tries += 1
+          turn2 = img
           if (tile === lastTile) {
-            console.log('pair')
+            // pairs
+            pairs += 1
+            console.log(pairs)
+            if (pairs === (rows * columns) / 2) {
+              console.log('won on ' + tries)
+            }
+            window.setTimeout(function () {
+              turn1.parentNode.classList.add('removed')
+              turn2.parentNode.classList.add('removed')
+              turn1 = null
+              turn2 = null
+            }, 400)
+          } else {
+            window.setTimeout(function () {
+              turn1.src = 'image/memoryGame/0.png'
+              turn2.src = 'image/memoryGame/0.png'
+              turn1 = null
+              turn2 = null
+            }, 500)
+
           }
-          turn1 = null
-          turn2 = null
+
         }
       }
 
       // creating new line after each row (4 images)
       if ((index + 1) % columns === 0) {
-        container.appendChild(document.createElement('br'))
+        div.appendChild(document.createElement('br'))
       }
     })
   }

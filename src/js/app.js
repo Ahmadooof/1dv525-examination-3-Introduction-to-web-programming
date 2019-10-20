@@ -1,3 +1,3 @@
 import memoryGame from './memoryGame.js';
 
-new memoryGame(4,4,'memoryContainer');
+new memoryGame(2,2,'memoryContainer');
