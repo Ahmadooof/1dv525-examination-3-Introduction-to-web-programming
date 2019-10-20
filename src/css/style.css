@@ -3,7 +3,7 @@
     width: 100px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 5;
     padding-top: 16px;
 }
 
@@ -12,7 +12,6 @@
     text-decoration: none;
     color: #818181;
     display: block;
-
 }
 
 .main {
@@ -26,4 +25,11 @@
 
 #chat{
     background: url("https://image.flaticon.com/icons/svg/1077/1077909.svg");
+    margin-top: 30px;
+
+}
+
+#sokoban{
+    background: url("https://image.flaticon.com/icons/svg/262/262545.svg");
+    margin-top: 30px;
 }
