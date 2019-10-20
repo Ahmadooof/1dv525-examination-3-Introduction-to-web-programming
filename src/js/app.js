@@ -1,3 +1,3 @@
-import test from './window.js';
+import memoryGame from './memoryGame.js';
 
-new test();
+new memoryGame(4,4,'memoryContainer');

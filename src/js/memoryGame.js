@@ -1,14 +1,17 @@
 export default class memoryGame {
 
-  const img
   constructor (rows, columns, container){
-    this.createImages(rows,columns)
+    this.container = document.getElementById(container);
+    this.rows = rows;
+    this.columns = columns;
+    this.createImages()
   }
 
-  createImages (rows, columns) {
-    for(let i = 0; i < rows*columns; i++){
-      img = document.createElement('img');
-      img.setAttribute("src", "")
+  createImages () {
+    for(let i = 0; i < this.rows*this.columns; i++){
+      let img = document.createElement('img');
+      img.setAttribute("src", "https://github.com/1dv525/aa224rm-examination-3/blob/master/src/image/memoryGame/0.png?raw=true")
+      this.container.appendChild(img);
     }
   }
 
