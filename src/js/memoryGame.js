@@ -2,25 +2,30 @@ export default class memoryGame {
 
   constructor (rows, columns, container) {
     this.container = document.getElementById(container)
-    this.template = document.querySelectorAll('#memoryContainer template')[0]
-
-    this.createImages(rows, columns)
+    this.template = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild
     this.tiles = this.shuffleArray(rows, columns)
-
+    this.createImages(rows, columns, this.template, this.container)
   }
 
-  createImages (rows, columns) {
-    for (let i = 0; i < rows * columns; i++) {
+  createImages (rows, columns, template, container) {
 
-      let img = document.importNode(this.template.content.firstElementChild, true)
+    this.tiles.forEach(function (tile, index) {
+      const img = document.importNode(template, true)
+      container.appendChild(img)
 
-      this.container.appendChild(img)
+      img.addEventListener('click', function () {
+        turnTile(tile, index, img)
+      })
+
+      function turnTile (tile, index, img) {
+        img.src = 'image/memoryGame/' + tile + '.png'
+      }
 
       // creating new line after each row (4 images)
-      if ((i + 1) % columns === 0) {
-        this.container.appendChild(document.createElement('br'))
+      if ((index + 1) % columns === 0) {
+        container.appendChild(document.createElement('br'))
       }
-    }
+    })
   }
 
   shuffleArray (rows, columns) {
