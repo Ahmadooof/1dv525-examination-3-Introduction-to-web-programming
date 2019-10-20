@@ -10,14 +10,16 @@ export default class memoryGame {
   createImages (rows, columns, template, container) {
 
     this.tiles.forEach(function (tile, index) {
-      const img = document.importNode(template, true)
-      container.appendChild(img)
+      const a = document.importNode(template, true)
+      container.appendChild(a)
 
-      img.addEventListener('click', function () {
-        turnTile(tile, index, img)
+      a.addEventListener('click', function (event) {
+        turnTile(tile, index, event.target)
       })
 
-      function turnTile (tile, index, img) {
+      function turnTile (tile, index, element) {
+        const img = element.nodeName === 'IMG' ? element : element.firstElementChild
+
         img.src = 'image/memoryGame/' + tile + '.png'
       }
 
