@@ -1,10 +1,11 @@
 export default class memoryGame {
+
   constructor (rows, columns, container) {
     this.container = document.getElementById(container)
-    this.template = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild
-    this.div = document.importNode(this.template, false)
+    this.memoryDiv = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild //this is memory div
+    this.div = document.importNode(this.memoryDiv, false)
     this.tiles = this.shuffleArray(rows, columns)
-    this.createImages(rows, columns, this.template, this.div)
+    this.createImages(rows, columns, this.memoryDiv, this.div)
     this.container.appendChild(this.div)
   }
 
