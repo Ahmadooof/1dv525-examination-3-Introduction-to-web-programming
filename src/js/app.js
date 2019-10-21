@@ -8,7 +8,8 @@ let windowDiv
 memoryGameButton.addEventListener('click', function () {
   let memoryGame = new MemoryGame(4, 4, 'memoryContainer')
   let myWindow = new window('.windowContainer')
-  myWindow.div.appendChild(memoryGame.container)
+  myWindow.div.appendChild(memoryGame.div)
+
   navWindow = document.querySelector('.navWindow')
   windowDiv = document.querySelector('.window')
   moveWindow(windowDiv)
@@ -32,6 +33,7 @@ function moveWindow (windowDiv) {
   }, true)
 
   navWindow.addEventListener('mousemove', function (event) {
+    event.preventDefault();
     if (isDown) {
       console.log(event.clientX)
       mousePosition = {
