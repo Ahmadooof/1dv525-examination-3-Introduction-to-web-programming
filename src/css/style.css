@@ -35,7 +35,7 @@ a{
 }
 
 #memoryContainer{
-    margin-left: 200px;
+
 }
 
 .memory img {
@@ -50,15 +50,23 @@ a{
     border: 5px solid darkslategray;
     border-radius: 5px;
     height: 300px;
-    width: 400px;
+    width: 255px;
     float: left;
     margin-left: 100px;
     margin-top: 40px;
+    display: none;
 }
 
 .navWindow{
-    width: 393px;
-    height: 30px;
+    width: 249px;
+    height: 38px;
     border: 3px solid #8AB8A4;
+    background-color: aliceblue;
+}
 
+.navWindow > button{
+    float: right;
+    width: 55px;
+    height: 37px;
+    background-color: yellow;
 }
