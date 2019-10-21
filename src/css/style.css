@@ -45,3 +45,20 @@ a{
 .memory .removed{
     visibility: hidden;
 }
+
+.window{
+    border: 5px solid darkslategray;
+    border-radius: 5px;
+    height: 300px;
+    width: 400px;
+    float: left;
+    margin-left: 100px;
+    margin-top: 40px;
+}
+
+.navWindow{
+    width: 393px;
+    height: 30px;
+    border: 3px solid #8AB8A4;
+
+}
