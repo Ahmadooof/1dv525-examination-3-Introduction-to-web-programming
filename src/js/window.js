@@ -10,17 +10,17 @@ export default class window {
     this.div = document.importNode(this.windowDiv, true)
     this.container.appendChild(this.div)
 
-
-    this.div.firstElementChild.addEventListener('mousedown', this.mouseDown, true)
-    this.div.firstElementChild.addEventListener('mouseup', this.mouseUp, true)
-    this.div.firstElementChild.addEventListener('mousemove', this.mouseMove, true)
+    console.log(this.div)
+    this.div.addEventListener('mousedown', this.mouseDown, true)
+    this.div.addEventListener('mouseup', this.mouseUp, true)
+    this.div.addEventListener('mousemove', this.mouseMove, true)
   }
 
   mouseDown (event) {
     this.isDown = true
     this.coordinates = [
-      this.parentNode.offsetLeft - event.clientX - 150,
-      this.parentNode.offsetTop - event.clientY - 40
+      this.offsetLeft - event.clientX - 150,
+      this.offsetTop - event.clientY - 40
     ]
   }
 
@@ -34,8 +34,8 @@ export default class window {
         x: event.clientX,
         y: event.clientY
       }
-      this.parentNode.style.left = (this.mousePosition.x + this.coordinates[0]) + 'px'
-      this.parentNode.style.top = (this.mousePosition.y + this.coordinates[1]) + 'px'
+      this.style.left = (this.mousePosition.x + this.coordinates[0]) + 'px'
+      this.style.top = (this.mousePosition.y + this.coordinates[1]) + 'px'
     }
   }
 }
