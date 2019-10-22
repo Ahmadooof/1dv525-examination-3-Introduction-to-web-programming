@@ -27,6 +27,17 @@ a {
     font-size: 13px;
 }
 
+.UserNameTextBox{
+    width: 130px;
+    height: 31px;
+}
+
+.buttonOk{
+    height: 37px;
+    width: 59px;
+    background-color: #29af2094;
+}
+
 button{
     cursor: pointer;
 }
