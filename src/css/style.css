@@ -9,10 +9,26 @@
 
     position: fixed;
     top: 0;
-    background-color: #73ac7859;}
+    background-color: #73ac7859;
+}
 
 a {
     text-decoration: none;
+}
+
+.changeNameButton {
+    background-color: #442e37;
+    border: none;
+    color: white;
+    padding: 11px 42px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+}
+
+button{
+    cursor: pointer;
 }
 
 .sidebar a {
@@ -96,7 +112,7 @@ textarea {
     background-color: aliceblue;
 }
 
-.navWindow > button {
+.buttonX {
     float: right;
     width: 55px;
     height: 37px;
