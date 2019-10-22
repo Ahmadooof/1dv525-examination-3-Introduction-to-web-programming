@@ -13,7 +13,7 @@ memoryGameButton.addEventListener('click', function () {
 })
 
 chatButton.addEventListener('click', function () {
-  let myChat = new chat()
+  let myChat = new chat('chatContainer')
   let myWindow = new window('.windowContainer')
-  // myWindow.div.appendChild(myChat)
+   // myWindow.div.appendChild(myChat)
 })

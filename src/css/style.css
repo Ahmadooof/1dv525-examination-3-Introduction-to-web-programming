@@ -5,9 +5,11 @@
     left: 5px;
     padding-top: 16px;
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 .sidebar a {
     padding: 50px 50px;
     color: #818181;
@@ -19,22 +21,22 @@ a{
     padding: 0px 10px;
 }
 
-#memory{
+#memory {
     background: url("https://image.flaticon.com/icons/svg/898/898756.svg");
 }
 
-#chat{
+#chat {
     background: url("https://image.flaticon.com/icons/svg/1077/1077909.svg");
     margin-top: 30px;
 
 }
 
-#sokoban{
+#sokoban {
     background: url("https://image.flaticon.com/icons/svg/262/262545.svg");
     margin-top: 30px;
 }
 
-#memoryContainer{
+#memoryContainer {
 
 }
 
@@ -42,12 +44,12 @@ a{
     width: 60px;
 }
 
-.memory .removed{
+.memory .removed {
     visibility: hidden;
 }
 
 
-.window{
+.window {
     border: 5px solid darkslategray;
     border-radius: 5px;
     height: 300px;
@@ -57,14 +59,40 @@ a{
     position: fixed;
 }
 
-.navWindow{
+.chat {
+    height: 255px;
+    width: 255px;
+     margin-left: 149px;
+    margin-top: 0px;
+    background-color: #E8728E;
+    color: white;
+    position: absolute;
+}
+
+.showMessages {
+    height: 199px
+}
+
+.text {
+    bottom: -4px;
+    position: absolute;
+    float: left;
+    width: 255px;
+}
+
+textarea {
+    width: 249px;
+    height: 50px;
+}
+
+.navWindow {
     width: 249px;
     height: 38px;
     border: 3px solid #8AB8A4;
     background-color: aliceblue;
 }
 
-.navWindow > button{
+.navWindow > button {
     float: right;
     width: 55px;
     height: 37px;
