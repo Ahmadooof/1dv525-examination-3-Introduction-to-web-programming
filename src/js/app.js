@@ -2,48 +2,56 @@ import MemoryGame from './memoryGame.js'
 import window from './window.js'
 
 const memoryGameButton = document.querySelector('#memory')
+
 let navWindow
 let windowDiv
+let countWindows = 0
+let mousePosition
+let coordinates = [0, 0]
+let isDown = false
 
 memoryGameButton.addEventListener('click', function () {
   let memoryGame = new MemoryGame(4, 4, 'memoryContainer')
   let myWindow = new window('.windowContainer')
   myWindow.div.appendChild(memoryGame.div)
-
-  navWindow = document.querySelector('.navWindow')
-  windowDiv = document.querySelector('.window')
-  moveWindow(windowDiv)
+  navWindow = document.querySelectorAll('.navWindow')[countWindows]
+  windowDiv = document.querySelectorAll('.window')[countWindows]
+  countWindows++
 })
 
-let mousePosition
-let coordinates = [0, 0]
-let isDown = false
+document.body.addEventListener('mousedown', event => {
+  if (event.target !== navWindow) {
+    return
+  }
+  isDown = true
+  console.log('X'+event.target.offsetLeft)
+  console.log('Y'+event.target.offsetTop)
+  console.log('X'+event.clientX)
+  console.log('Y'+event.clientY)
 
-function moveWindow (windowDiv) {
-  navWindow.addEventListener('mousedown', function (event) {
-    isDown = true
-    coordinates = [
-      navWindow.offsetLeft - event.clientX - 100,
-      navWindow.offsetTop - event.clientY - 10
-    ]
-  }, true)
+  coordinates = [
+    event.target.offsetLeft - event.clientX ,
+    event.target.offsetTop - event.clientY
+  ]
+}, true)
 
-  navWindow.addEventListener('mouseup', function () {
-    isDown = false
-  }, true)
+document.body.addEventListener('mouseup', event => {
+  if (event.target !== navWindow) {
+    return
+  }
+  isDown = false
+}, true)
 
-  navWindow.addEventListener('mousemove', function (event) {
-    event.preventDefault();
-    if (isDown) {
-      console.log(event.clientX)
-      mousePosition = {
-        x: event.clientX,
-        y: event.clientY
-      }
-      windowDiv.style.marginLeft = (mousePosition.x + coordinates[0]) + 'px'
-      windowDiv.style.marginTop = (mousePosition.y + coordinates[1]) + 'px'
-      windowDiv.style.marginTop = (mousePosition.y + coordinates[1]) + 'px'
+document.body.addEventListener('mousemove', event => {
+  if (event.target !== navWindow) {
+    return
+  }
+  if (isDown) {
+    mousePosition = {
+      x: event.clientX,
+      y: event.clientY
     }
-  }, true)
-
-}
+    windowDiv.style.marginLeft = (mousePosition.x + coordinates[0]) + 'px'
+    windowDiv.style.marginTop = (mousePosition.y + coordinates[1]) + 'px'
+  }
+}, true)
