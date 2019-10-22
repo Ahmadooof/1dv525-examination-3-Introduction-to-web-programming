@@ -6,9 +6,7 @@ const memoryGameButton = document.querySelector('#memory')
 let navWindow
 let windowDiv
 let countWindows = 0
-let mousePosition
-let coordinates = [0, 0]
-let isDown = false
+
 
 memoryGameButton.addEventListener('click', function () {
   let memoryGame = new MemoryGame(4, 4, 'memoryContainer')
@@ -18,27 +16,28 @@ memoryGameButton.addEventListener('click', function () {
   windowDiv = document.querySelectorAll('.window')[countWindows]
   countWindows++
 })
-
+let mousePosition
+let coordinates = [0, 0]
+let isDown = false
 document.body.addEventListener('mousedown', event => {
   if (event.target !== navWindow) {
     return
   }
+  console.log(navWindow.offsetLeft)
   isDown = true
-  console.log('X'+event.target.offsetLeft)
-  console.log('Y'+event.target.offsetTop)
-  console.log('X'+event.clientX)
-  console.log('Y'+event.clientY)
-
   coordinates = [
-    event.target.offsetLeft - event.clientX ,
-    event.target.offsetTop - event.clientY
+    windowDiv.offsetLeft - event.clientX - 150 ,
+    windowDiv.offsetTop - event.clientY - 40
   ]
+  console.log(coordinates[0])
 }, true)
 
 document.body.addEventListener('mouseup', event => {
   if (event.target !== navWindow) {
     return
   }
+  mousePosition = {}
+  coordinates = [0, 0]
   isDown = false
 }, true)
 
@@ -48,10 +47,10 @@ document.body.addEventListener('mousemove', event => {
   }
   if (isDown) {
     mousePosition = {
-      x: event.clientX,
-      y: event.clientY
+      x : event.clientX,
+      y : event.clientY
     }
-    windowDiv.style.marginLeft = (mousePosition.x + coordinates[0]) + 'px'
-    windowDiv.style.marginTop = (mousePosition.y + coordinates[1]) + 'px'
+    windowDiv.style.left = (mousePosition.x + coordinates[0]) + 'px';
+    windowDiv.style.top  = (mousePosition.y + coordinates[1]) + 'px';
   }
 }, true)
