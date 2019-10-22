@@ -1,9 +1,5 @@
 export default class window {
 
-  isDown
-  coordinates
-  mousePosition
-
   constructor (container) {
     this.container = document.querySelector(container)
     this.windowDiv = document.querySelectorAll('.windowContainer template')[0].content.firstElementChild
