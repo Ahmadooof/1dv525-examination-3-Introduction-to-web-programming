@@ -140,7 +140,8 @@ export default class chat {
    */
   isUserNameExist () {
     this.myName = localStorage.getItem('username')
-    if (this.myName === null) {
+    console.log(this.myName)
+    if (this.myName === null || this.myName === "") {
       return false
     } else {
       return true
