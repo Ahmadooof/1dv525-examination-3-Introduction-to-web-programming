@@ -1,41 +1,57 @@
 export default class chat {
 
-  constructor (container,window) {
+  constructor (container, myWindow) {
     this.container = document.querySelector(container)
     this.chatDiv = document.querySelectorAll('.chatContainer template')[0].content.firstElementChild
     this.div = document.importNode(this.chatDiv, true)
     this.container.appendChild(this.div)
 
+    this.showName = this.div.childNodes[3]
+
     /**
      * if true => adding "Change UserName" button, adding textbox to set new username
-     * adding ok to take this name and store it in local storage.
+     * adding "ok" button to take this name and store it in local storage.
      */
-    if(this.isUserNameExist())
-    {
-      let changeNameButton = document.createElement('button')
-      changeNameButton.innerText = "Change Username"
-      changeNameButton.className = 'changeNameButton'
-      window.div.firstElementChild.appendChild(changeNameButton)
-      changeNameButton.addEventListener('click', (event) => {
-        changeNameButton.remove()
-        let textBox = document.createElement('input')
-        textBox.placeholder = "Enter UserName"
-        textBox.className = "UserNameTextBox"
-        window.div.firstElementChild.appendChild(textBox)
-        let buttonOk = document.createElement('button')
-        buttonOk.innerText = "OK"
-        buttonOk.className = "buttonOk"
-        window.div.firstElementChild.appendChild(buttonOk)
-        buttonOk.addEventListener('click', () => {
-          let nameValue = document.querySelector('.UserNameTextBox').value
-          localStorage.setItem('username', nameValue)
-          textBox.remove()
-          buttonOk.remove()
-        })
-    })
+    if (this.isUserNameExist()) {
+      this.userName = localStorage.getItem('username')
+      this.showName.innerText = 'Me ' + '( ' + this.userName + ' )'
+      this.changeNameProcess(myWindow)
+    } else {
+      this.showName.style.display = 'none'
     }
   }
 
+  changeNameProcess(myWindow)
+  {
+    let changeNameButton = document.createElement('button')
+    changeNameButton.innerText = 'Change Username'
+    changeNameButton.className = 'changeNameButton'
+    myWindow.div.firstElementChild.appendChild(changeNameButton)
+    changeNameButton.addEventListener('click', (event) => {
+      changeNameButton.remove()
+      let textBox = document.createElement('input')
+      textBox.placeholder = 'Enter UserName'
+      textBox.className = 'UserNameTextBox'
+      myWindow.div.firstElementChild.appendChild(textBox)
+      let buttonOk = document.createElement('button')
+      buttonOk.innerText = 'OK'
+      buttonOk.className = 'buttonOk'
+      myWindow.div.firstElementChild.appendChild(buttonOk)
+      buttonOk.addEventListener('click', () => {
+        this.nameValue = document.querySelector('.UserNameTextBox').value
+        localStorage.setItem('username', this.nameValue)
+        this.showName.innerText = 'Me ' + '( ' + this.nameValue + ' )'
+        textBox.remove()
+        buttonOk.remove()
+        this.changeNameProcess(myWindow)
+      })
+    })
+  }
+
+  /**
+   * return true if there is a user name in local storage
+   * @returns {boolean}
+   */
   isUserNameExist () {
     this.userName = localStorage.getItem('username')
     if (this.userName === null) {

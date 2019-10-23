@@ -17,7 +17,7 @@ a {
 }
 
 .changeNameButton {
-    background-color: #442e37;
+    background-color: #4c75a7;
     border: none;
     color: white;
     padding: 11px 42px;
@@ -36,6 +36,11 @@ a {
     height: 37px;
     width: 59px;
     background-color: #29af2094;
+}
+
+.MyName{
+    height: 21px;
+    background-color:#4c75a7;
 }
 
 button{
@@ -95,13 +100,13 @@ button{
     height: 255px;
     width: 255px;
     margin-top: 0px;
-    background-color: #E8728E;
+    background-color: #b56174;
     color: white;
     position: absolute;
 }
 
 .showMessages {
-    height: 199px
+    height: 178px;
 }
 
 .text {
