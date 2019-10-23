@@ -6,50 +6,70 @@ export default class chat {
    * @param myWindow
    */
   constructor (container, myWindow) {
+    /**
+     * initializations variables
+     * @type {any}
+     */
     this.container = document.querySelector(container)
     this.chatDiv = document.querySelectorAll('.chatContainer template')[0].content.firstElementChild
     this.div = document.importNode(this.chatDiv, true)
     this.container.appendChild(this.div)
 
+    this.socket = new WebSocket('ws://vhost3.lnu.se:20080/socket/')
+
+    this.myName = localStorage.getItem('username')
+
     this.showName = this.div.childNodes[3]
     this.showMessageDiv = this.div.childNodes[1]
+    this.textAreaDiv = this.div.childNodes[5]
 
-
+    // let configJSON = JSON.stringify(configJS)
 
     /**
      * if true => show username in window, change username process
      * else add new username
      */
     if (this.isUserNameExist()) {
-      this.userName = localStorage.getItem('username')
-      this.showName.innerText = 'Me ' + '( ' + this.userName + ' )'
+      this.showName.innerText = 'Me ' + '( ' + this.myName + ' )'
       this.changeNameProcess(myWindow)
     } else {
       this.showName.style.display = 'none'
       this.addUserName(myWindow)
     }
-    let configJS = {
-      type: "message",
-      data : "The message text is sent using the data property",
-      username: "tester",
-    }
-    let configJSON = JSON.stringify(configJS);
 
-    this.socket = new WebSocket('ws://vhost3.lnu.se:20080/socket/');
-
-    // message received - show the message in div#messages
+    /**
+     * Receive messages from server
+     * @param event
+     */
     this.socket.onmessage = (event) => {
-      this.messageDiv = document.createElement('div');
+      this.messageDiv = document.createElement('div')
       this.message = event.data
       this.message = JSON.parse(this.message)
-      this.userName = this.message.username
+      this.strangerUserName = this.message.username
       this.data = this.message.data
-
-      this.messageDiv.innerHTML = this.userName+":"+"<br>"+this.data
+      this.messageDiv.innerHTML = this.strangerUserName + ':' + '<br>' + this.data
       this.messageDiv.className = 'container'
       this.showMessageDiv.appendChild(this.messageDiv)
-      // document.getElementById('messages').prepend(messageElem);
     }
+
+    /**
+     * Send messages to the server
+     */
+    this.textAreaDiv.addEventListener('keypress',  (event) => {
+      this.myName = localStorage.getItem('username')
+      if (event.keyCode === 13) {
+        this.messageJsToServer = {
+          type: 'message',
+          data: event.target.value,
+          username: this.myName,
+          key:'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
+        }
+        this.sendJsonMessage = JSON.stringify(this.messageJsToServer)
+         this.socket.send(this.sendJsonMessage)
+      }
+    })
+
+
   }
 
   /**
@@ -122,8 +142,8 @@ export default class chat {
    * @returns {boolean}
    */
   isUserNameExist () {
-    this.userName = localStorage.getItem('username')
-    if (this.userName === null) {
+    this.myName = localStorage.getItem('username')
+    if (this.myName === null) {
       return false
     } else {
       return true
