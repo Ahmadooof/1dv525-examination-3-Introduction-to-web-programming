@@ -16,7 +16,15 @@ export default class window {
     })
   }
 
+  /**
+   * on mouseDown of window => hide all windows which on the screen unless the window which we click
+   * @param event
+   */
   mouseDown (event) {
+    document.querySelectorAll('.window').forEach((window) => {
+      window.style.zIndex = -1
+    })
+    this.style.zIndex = 999
     this.isDown = true
     this.coordinates = [
       this.offsetLeft - event.clientX - 150,
