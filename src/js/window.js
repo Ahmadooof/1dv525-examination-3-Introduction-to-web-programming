@@ -6,9 +6,14 @@ export default class window {
     this.div = document.importNode(this.windowDiv, true)
     this.container.appendChild(this.div)
 
+    this.closeWindowElement = this.div.childNodes[1].childNodes[1]
+
     this.div.addEventListener('mousedown', this.mouseDown, true)
     this.div.addEventListener('mouseup', this.mouseUp, true)
     this.div.addEventListener('mousemove', this.mouseMove, true)
+    this.closeWindowElement.addEventListener('click', (event) => {
+      this.div.remove()
+    })
   }
 
   mouseDown (event) {

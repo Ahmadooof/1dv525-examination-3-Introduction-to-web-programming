@@ -68,10 +68,7 @@ export default class chat {
          this.socket.send(this.sendJsonMessage)
       }
     })
-
-
   }
-
   /**
    * adding "add userName" button, adding textbox to set username
    * adding "ok" button to take this name and store it in local storage.

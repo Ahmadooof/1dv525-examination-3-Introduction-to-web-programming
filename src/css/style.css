@@ -33,7 +33,7 @@ a {
 }
 
 .changeNameButton {
-    background-color: #4c75a7;
+    background-color: #4c75a7 !important;
     border: none;
     color: white;
     padding: 11px 42px;
