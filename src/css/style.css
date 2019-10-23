@@ -32,6 +32,12 @@ a {
     text-decoration: none;
 }
 
+.game{
+    width: 760px;
+    height: 520px;
+    margin-left: 200px;
+}
+
 .changeNameButton {
     background-color: #4c75a7 !important;
     border: none;

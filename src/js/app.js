@@ -1,10 +1,11 @@
 import MemoryGame from './memoryGame.js'
 import window from './window.js'
 import chat from './chat.js'
+import sokobanGame from './sokobanGame.js'
 
 const memoryGameButton = document.querySelector('#memory')
 const chatButton = document.querySelector('#chat')
-const sokobanGame = document.querySelector('#sokoban')
+const sokobanGameButton = document.querySelector('#sokoban')
 
 memoryGameButton.addEventListener('click', function () {
   let memoryGame = new MemoryGame(4, 4, 'memoryContainer')
@@ -18,8 +19,8 @@ chatButton.addEventListener('click', function () {
   myWindow.div.appendChild(myChat.div)
 })
 
-sokobanGame.addEventListener('click', function () {
+sokobanGameButton.addEventListener('click', function () {
   let myWindow = new window('.windowContainer')
-  let myChat = new chat('.chatContainer', myWindow)
-  myWindow.div.appendChild(myChat.div)
+  let sokobanObj = new sokobanGame('.skoboanContainer', myWindow)
+  // myWindow.div.appendChild(sokobanObj.div)
 })
