@@ -12,7 +12,10 @@ export default class chat {
     this.container.appendChild(this.div)
 
     this.showName = this.div.childNodes[3]
-    this.messageDiv = document.createElement('div');
+    this.showMessageDiv = this.div.childNodes[1]
+
+
+
     /**
      * if true => show username in window, change username process
      * else add new username
@@ -35,10 +38,12 @@ export default class chat {
     this.socket = new WebSocket('ws://vhost3.lnu.se:20080/socket/');
 
     // message received - show the message in div#messages
-    this.socket.onmessage = function(event) {
+    this.socket.onmessage = (event) => {
+      this.messageDiv = document.createElement('div');
       this.message = event.data
       this.messageDiv.textContent = this.message
-
+      this.messageDiv.className = 'container'
+      this.showMessageDiv.appendChild(this.messageDiv)
       // document.getElementById('messages').prepend(messageElem);
     }
   }

@@ -12,6 +12,22 @@
     background-color: #73ac7859;
 }
 
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    color: #555;
+    margin: 10px 0;
+    overflow-wrap: break-word;
+}
+
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 a {
     text-decoration: none;
 }
@@ -100,13 +116,15 @@ button{
     height: 255px;
     width: 255px;
     margin-top: 0px;
-    background-color: #b56174;
+    background-color: #5aa673d4;
     color: white;
     position: absolute;
 }
 
 .showMessages {
     height: 178px;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 .text {
