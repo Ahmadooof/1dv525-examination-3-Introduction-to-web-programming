@@ -18,11 +18,40 @@ export default class chat {
       this.changeNameProcess(myWindow)
     } else {
       this.showName.style.display = 'none'
+      this.addUserName(myWindow)
     }
   }
 
-  changeNameProcess(myWindow)
-  {
+  addUserName (myWindow) {
+    let addUserName = document.createElement('button')
+    addUserName.innerText = 'Add Username'
+    addUserName.className = 'changeNameButton'
+    addUserName.style.backgroundColor = '#4ca76c'
+    addUserName.style.padding = '11px 53px'
+    myWindow.div.firstElementChild.appendChild(addUserName)
+    addUserName.addEventListener('click', (event) => {
+      addUserName.remove()
+      let textBox = document.createElement('input')
+      textBox.placeholder = 'Enter UserName'
+      textBox.className = 'UserNameTextBox'
+      myWindow.div.firstElementChild.appendChild(textBox)
+      let buttonOk = document.createElement('button')
+      buttonOk.innerText = 'OK'
+      buttonOk.className = 'buttonOk'
+      myWindow.div.firstElementChild.appendChild(buttonOk)
+      buttonOk.addEventListener('click', () => {
+        this.nameValue = document.querySelector('.UserNameTextBox').value
+        localStorage.setItem('username', this.nameValue)
+        this.showName.style.display = 'block'
+        this.showName.innerText = 'Me ' + '( ' + this.nameValue + ' )'
+        textBox.remove()
+        buttonOk.remove()
+        this.changeNameProcess(myWindow)
+      })
+    })
+  }
+
+  changeNameProcess (myWindow) {
     let changeNameButton = document.createElement('button')
     changeNameButton.innerText = 'Change Username'
     changeNameButton.className = 'changeNameButton'
