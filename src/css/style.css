@@ -52,6 +52,8 @@ a {
     height: 37px;
     width: 59px;
     background-color: #29af2094;
+    border: none;
+
 }
 
 .MyName{
@@ -103,9 +105,9 @@ button{
 
 
 .window {
-    border: 5px solid darkslategray;
+    border: 2px solid darkslategray;
     border-radius: 5px;
-    height: 300px;
+    height: 297px;
     width: 255px;
     margin-left: 150px;
     margin-top: 40px;
@@ -140,10 +142,9 @@ textarea {
 }
 
 .navWindow {
-    width: 249px;
     height: 38px;
-    border: 3px solid #8AB8A4;
-    background-color: aliceblue;
+    border: 2px solid #4c75a7;
+    background-color: #4c75a7;
 }
 
 .buttonX {
@@ -151,4 +152,5 @@ textarea {
     width: 55px;
     height: 37px;
     background-color: yellow;
+    border: none;
 }
