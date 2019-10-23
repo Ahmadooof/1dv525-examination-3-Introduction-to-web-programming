@@ -41,7 +41,11 @@ export default class chat {
     this.socket.onmessage = (event) => {
       this.messageDiv = document.createElement('div');
       this.message = event.data
-      this.messageDiv.textContent = this.message
+      this.message = JSON.parse(this.message)
+      this.userName = this.message.username
+      this.data = this.message.data
+
+      this.messageDiv.innerHTML = this.userName+":"+"<br>"+this.data
       this.messageDiv.className = 'container'
       this.showMessageDiv.appendChild(this.messageDiv)
       // document.getElementById('messages').prepend(messageElem);

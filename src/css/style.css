@@ -51,9 +51,10 @@ a {
 .buttonOk{
     height: 37px;
     width: 59px;
-    background-color: #29af2094;
     border: none;
-
+    background-color: #be5b6e;
+    border-radius: 25px;
+    color: white;
 }
 
 .MyName{
@@ -153,4 +154,5 @@ textarea {
     height: 37px;
     background-color: yellow;
     border: none;
+    border-radius: 25px;
 }
