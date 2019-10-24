@@ -22,6 +22,11 @@
     overflow-wrap: break-word;
 }
 
+.sokobanWindow{
+    height: 522px !important;
+    width: 570px !important;
+}
+
 .container::after {
     content: "";
     clear: both;
@@ -35,7 +40,6 @@ a {
 .game{
     width: 585px;
     height: 520px;
-    margin-left: 200px;
     line-height: 0;
 }
 

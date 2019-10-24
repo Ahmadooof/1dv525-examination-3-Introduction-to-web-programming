@@ -40,6 +40,7 @@ export default class sokobanGame {
     this.start()
     this.container.appendChild(this.game)
 
+    window.div.classList.add('sokobanWindow')
   }
 
   printMap (allImages, tileMap) {

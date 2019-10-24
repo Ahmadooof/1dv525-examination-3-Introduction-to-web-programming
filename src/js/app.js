@@ -22,5 +22,5 @@ chatButton.addEventListener('click', function () {
 sokobanGameButton.addEventListener('click', function () {
   let myWindow = new window('.windowContainer')
   let sokobanObj = new sokobanGame('.skoboanContainer', myWindow)
-   // myWindow.div.appendChild(sokobanObj.game)
+    myWindow.div.appendChild(sokobanObj.game)
 })
