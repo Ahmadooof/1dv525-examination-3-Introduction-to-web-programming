@@ -23,6 +23,13 @@ export default class sokobanGame {
         [[' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' '], [' ']]
       ]
     }
+
+    this.playerPosition = 220
+    this.up = this.playerPosition - 19
+    this.down = this.playerPosition + 19
+    this.left = this.playerPosition - 1
+    this.right = this.playerPosition + 1
+
     this.container = document.querySelector(container)
     this.gameDiv = document.querySelectorAll('.skoboanContainer template')[0].content.firstElementChild //this is memory div
 
@@ -60,44 +67,96 @@ export default class sokobanGame {
   // keycode : (38 up), (37 left), (39 right), (40 down)
   start () {
     window.onkeydown = (key) => {
-      checkWall()
-      checkTwoBoxes()
-      checkBoxAndWall()
-
+      this.checkWall()
+      this.checkTwoBoxes()
+      this.checkBoxAndWall()
+      console.log(this.game)
       switch (key.keyCode) {
         case 38:
-          move()
+          this.checkGoal()
+          this.moveUp()
           break
         case 39:
-          move()
+          this.checkGoal()
+          this.moveRight()
+          break
         case 40:
-          move()
+          this.checkGoal()
+          this.moveDown()
+          break
         case 37:
-          move()
+          this.checkGoal()
+          this.moveLeft()
+          break
       }
     }
-    function move () {
-      checkGoal()
-    }
+  }
 
-    function checkBoxAndWall(){
+  moveUp () {
+    this.game.getElementsByTagName('IMG')[this.up]
+      .setAttribute('src', 'image/sokobanGame/person.gif')
+    this.game.getElementsByTagName('IMG')[this.playerPosition]
+      .setAttribute('src', 'image/sokobanGame/ground.gif')
 
-    }
+    this.down = this.playerPosition
+    this.playerPosition = this.up
+    this.up = this.up - 19
+    this.left = this.playerPosition - 1
+    this.right = this.playerPosition + 1
+  }
 
-    function checkWall () {
+  moveDown () {
+    this.game.getElementsByTagName('IMG')[this.down]
+      .setAttribute('src', 'image/sokobanGame/person.gif')
+    this.game.getElementsByTagName('IMG')[this.playerPosition]
+      .setAttribute('src', 'image/sokobanGame/ground.gif')
 
-    }
+    this.up = this.playerPosition
+    this.playerPosition = this.down
+    this.down = this.down + 19
+    this.left = this.playerPosition - 1
+    this.right = this.playerPosition + 1
+  }
 
-    function checkGround () {
+  moveLeft () {
+    this.game.getElementsByTagName('IMG')[this.left].setAttribute('src', 'image/sokobanGame/person.gif')
+    this.game.getElementsByTagName('IMG')[this.playerPosition].setAttribute('src', 'image/sokobanGame/ground.gif')
 
-    }
+    this.right = this.playerPosition
+    this.playerPosition = this.left
+    this.left = this.left - 1
+    this.down = this.playerPosition + 19
+    this.up = this.playerPosition - 19
+  }
 
-    function checkTwoBoxes () {
+  moveRight () {
+    this.game.getElementsByTagName('IMG')[this.right].setAttribute('src', 'image/sokobanGame/person.gif')
+    this.game.getElementsByTagName('IMG')[this.playerPosition].setAttribute('src', 'image/sokobanGame/ground.gif')
 
-    }
+    this.left = this.playerPosition
+    this.playerPosition = this.right
+    this.right = this.right + 1
+    this.down = this.playerPosition + 19
+    this.up = this.playerPosition - 19
+  }
 
-    function checkGoal () {
+  checkBoxAndWall () {
 
-    }
+  }
+
+  checkWall () {
+
+  }
+
+  checkGround () {
+
+  }
+
+  checkTwoBoxes () {
+
+  }
+
+  checkGoal () {
+
   }
 }
