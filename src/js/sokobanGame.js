@@ -30,7 +30,7 @@ export default class sokobanGame {
     this.allImages = this.gameDiv.querySelectorAll('img')
     this.game = document.importNode(this.gameDiv, false)
     this.printMap(this.allImages, this.tileMap)
-
+    this.start()
     this.container.appendChild(this.game)
 
   }
@@ -54,6 +54,50 @@ export default class sokobanGame {
           this.game.appendChild(document.importNode(this.allImages[3], false))
         }
       }
+    }
+  }
+
+  // keycode : (38 up), (37 left), (39 right), (40 down)
+  start () {
+    window.onkeydown = (key) => {
+      checkWall()
+      checkTwoBoxes()
+      checkBoxAndWall()
+
+      switch (key.keyCode) {
+        case 38:
+          move()
+          break
+        case 39:
+          move()
+        case 40:
+          move()
+        case 37:
+          move()
+      }
+    }
+    function move () {
+      checkGoal()
+    }
+
+    function checkBoxAndWall(){
+
+    }
+
+    function checkWall () {
+
+    }
+
+    function checkGround () {
+
+    }
+
+    function checkTwoBoxes () {
+
+    }
+
+    function checkGoal () {
+
     }
   }
 }
