@@ -70,26 +70,49 @@ export default class sokobanGame {
       if (this.isWall(key.keyCode)) {
         return
       }
-      this.checkTwoBoxes()
-      this.checkBoxAndWall()
       switch (key.keyCode) {
         case 38:
-          this.checkGoal()
+          this.moveBox(key.keyCode)
           this.moveUp()
           break
         case 39:
-          this.checkGoal()
+          this.moveBox(key.keyCode)
           this.moveRight()
           break
         case 40:
-          this.checkGoal()
+          this.moveBox(key.keyCode)
           this.moveDown()
           break
         case 37:
-          this.checkGoal()
+          this.moveBox(key.keyCode)
           this.moveLeft()
           break
       }
+    }
+  }
+
+  // 8446b401dfc2e12f42aba1874e6f4bb4.gif box
+  moveBox (keyCode) {
+    if (keyCode == 37 && this.game.getElementsByTagName('IMG')[this.left]
+      .getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif') {
+      this.game.getElementsByTagName('IMG')[this.left - 1]
+        .setAttribute('src', 'image/sokobanGame/box.gif')
+    }
+
+    if (keyCode == 38 && this.game.getElementsByTagName('IMG')[this.up]
+      .getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif') {
+      this.game.getElementsByTagName('IMG')[this.up - 19]
+        .setAttribute('src', 'image/sokobanGame/box.gif')
+    }
+    if (keyCode == 39 && this.game.getElementsByTagName('IMG')[this.right]
+      .getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif') {
+      this.game.getElementsByTagName('IMG')[this.right + 1]
+        .setAttribute('src', 'image/sokobanGame/box.gif')
+    }
+    if (keyCode == 40 && this.game.getElementsByTagName('IMG')[this.down]
+      .getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif') {
+      this.game.getElementsByTagName('IMG')[this.down + 19]
+        .setAttribute('src', 'image/sokobanGame/box.gif')
     }
   }
 
@@ -120,8 +143,10 @@ export default class sokobanGame {
   }
 
   moveLeft () {
-    this.game.getElementsByTagName('IMG')[this.left].setAttribute('src', 'image/sokobanGame/person.gif')
-    this.game.getElementsByTagName('IMG')[this.playerPosition].setAttribute('src', 'image/sokobanGame/ground.gif')
+    this.game.getElementsByTagName('IMG')[this.left]
+      .setAttribute('src', 'image/sokobanGame/person.gif')
+    this.game.getElementsByTagName('IMG')[this.playerPosition]
+      .setAttribute('src', 'image/sokobanGame/ground.gif')
 
     this.right = this.playerPosition
     this.playerPosition = this.left
@@ -131,8 +156,10 @@ export default class sokobanGame {
   }
 
   moveRight () {
-    this.game.getElementsByTagName('IMG')[this.right].setAttribute('src', 'image/sokobanGame/person.gif')
-    this.game.getElementsByTagName('IMG')[this.playerPosition].setAttribute('src', 'image/sokobanGame/ground.gif')
+    this.game.getElementsByTagName('IMG')[this.right]
+      .setAttribute('src', 'image/sokobanGame/person.gif')
+    this.game.getElementsByTagName('IMG')[this.playerPosition]
+      .setAttribute('src', 'image/sokobanGame/ground.gif')
 
     this.left = this.playerPosition
     this.playerPosition = this.right
@@ -147,7 +174,6 @@ export default class sokobanGame {
 
   // 49a475d810a853434f000b535f9e4382.gif ground
   // d77480fbbd22de843db212182bcd9e02.gif wall
-  // 8446b401dfc2e12f42aba1874e6f4bb4.gif box
   // 6d333f4e3a314241695c33685e333d97.gif goal
   isWall (keyCode) {
     console.log(keyCode)
