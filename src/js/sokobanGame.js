@@ -67,10 +67,11 @@ export default class sokobanGame {
   // keycode : (38 up), (37 left), (39 right), (40 down)
   start () {
     window.onkeydown = (key) => {
-      this.checkWall()
+      if (this.isWall(key.keyCode)) {
+        return
+      }
       this.checkTwoBoxes()
       this.checkBoxAndWall()
-      console.log(this.game)
       switch (key.keyCode) {
         case 38:
           this.checkGoal()
@@ -144,8 +145,26 @@ export default class sokobanGame {
 
   }
 
-  checkWall () {
-
+  // 49a475d810a853434f000b535f9e4382.gif ground
+  // d77480fbbd22de843db212182bcd9e02.gif wall
+  // 8446b401dfc2e12f42aba1874e6f4bb4.gif box
+  // 6d333f4e3a314241695c33685e333d97.gif goal
+  isWall (keyCode) {
+    console.log(keyCode)
+    if (keyCode == '38') {
+      console.log('hi')
+      return this.game.getElementsByTagName('IMG')[this.up]
+        .getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif'
+    } else if (keyCode == '40') {
+      return this.game.getElementsByTagName('IMG')[this.down]
+        .getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif'
+    } else if (keyCode == '37') {
+      return this.game.getElementsByTagName('IMG')[this.left]
+        .getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif'
+    } else if (keyCode == '39') {
+      return this.game.getElementsByTagName('IMG')[this.right]
+        .getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif'
+    }
   }
 
   checkGround () {
