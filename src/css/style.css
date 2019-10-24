@@ -33,9 +33,10 @@ a {
 }
 
 .game{
-    width: 760px;
+    width: 710px;
     height: 520px;
     margin-left: 200px;
+    line-height: 0;
 }
 
 .changeNameButton {
@@ -109,6 +110,8 @@ button{
 .memory .removed {
     visibility: hidden;
 }
+
+
 
 
 .window {
