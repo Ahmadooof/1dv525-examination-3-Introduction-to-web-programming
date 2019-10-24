@@ -20,10 +20,10 @@ export default class memoryGame {
       div.appendChild(a)
       a.addEventListener('click', function (event) {
         const img = event.target.nodeName === 'IMG' ? event.target : event.target.firstElementChild
-        turnTile(tile, index, img)
+        turnTile(tile, index, img, div)
       })
 
-      function turnTile (tile, index, img) {
+      function turnTile (tile, index, img, myWindow) {
         if (turn2) {
           return
         }
@@ -42,7 +42,7 @@ export default class memoryGame {
             pairs += 1
             console.log(pairs)
             if (pairs === (rows * columns) / 2) {
-              console.log('won on ' + tries)
+              div.textContent = 'Won on ' + tries + ' tries'
             }
             window.setTimeout(function () {
               turn1.parentNode.classList.add('removed')

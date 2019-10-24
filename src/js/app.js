@@ -8,8 +8,8 @@ const chatButton = document.querySelector('#chat')
 const sokobanGameButton = document.querySelector('#sokoban')
 
 memoryGameButton.addEventListener('click', function () {
-  let memoryGame = new MemoryGame(4, 4, 'memoryContainer')
   let myWindow = new window('.windowContainer')
+  let memoryGame = new MemoryGame(4, 4, 'memoryContainer', myWindow)
   myWindow.div.appendChild(memoryGame.div)
 })
 
@@ -22,5 +22,5 @@ chatButton.addEventListener('click', function () {
 sokobanGameButton.addEventListener('click', function () {
   let myWindow = new window('.windowContainer')
   let sokobanObj = new sokobanGame('.skoboanContainer', myWindow)
-    myWindow.div.appendChild(sokobanObj.game)
+  myWindow.div.appendChild(sokobanObj.game)
 })
