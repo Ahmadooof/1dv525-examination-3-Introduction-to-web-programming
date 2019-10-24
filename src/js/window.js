@@ -1,13 +1,10 @@
 export default class window {
-
   constructor (container) {
     this.container = document.querySelector(container)
     this.windowDiv = document.querySelectorAll('.windowContainer template')[0].content.firstElementChild
     this.div = document.importNode(this.windowDiv, true)
     this.container.appendChild(this.div)
-
     this.closeWindowElement = this.div.childNodes[1].childNodes[1]
-
     this.div.addEventListener('mousedown', this.mouseDown, true)
     this.div.addEventListener('mouseup', this.mouseUp, true)
     this.div.addEventListener('mousemove', this.mouseMove, true)
@@ -26,10 +23,8 @@ export default class window {
     })
     this.style.zIndex = 999
     this.isDown = true
-    this.coordinates = [
-      this.offsetLeft - event.clientX - 150,
-      this.offsetTop - event.clientY - 40
-    ]
+    this.coordinates = [this.offsetLeft - event.clientX - 150,
+      this.offsetTop - event.clientY - 40]
   }
 
   mouseUp () {

@@ -1,5 +1,4 @@
 export default class sokobanGame {
-
   constructor (container, window) {
     this.tileMap = {
       column: 19,
@@ -31,9 +30,11 @@ export default class sokobanGame {
     this.right = this.playerPosition + 1
 
     this.container = document.querySelector(container)
-    this.gameDiv = document.querySelectorAll('.skoboanContainer template')[0].content.firstElementChild //this is memory div
+    this.gameDiv = document.querySelectorAll('.skoboanContainer template')[0].content.firstElementChild
 
-    // (0 = box) , (1 = goal), (2 = ground), (3 = person), (4 = wall)
+    /**
+     *  (0 = box) , (1 = goal), (2 = ground), (3 = person), (4 = wall)
+     */
     this.allImages = this.gameDiv.querySelectorAll('img')
     this.game = document.importNode(this.gameDiv, false)
     this.printMap(this.allImages, this.tileMap)
@@ -65,7 +66,9 @@ export default class sokobanGame {
     }
   }
 
-  // keycode : (38 up), (37 left), (39 right), (40 down)
+  /**
+   * keycode : (38 up), (37 left), (39 right), (40 down)
+   */
   start () {
     window.onkeydown = (key) => {
       if (this.isWallOrTwoBoxes(key.keyCode) || this.isBoxAndWall(key.keyCode)) {
@@ -97,47 +100,45 @@ export default class sokobanGame {
           if (this.checkIfBoxAround(key.keyCode)) {
             this.moveBox(key.keyCode)
             this.moveLeft()
-            return
           } else this.moveLeft()
-          return
       }
     }
   }
 
   checkIfBoxAround (keyCode) {
-    if (keyCode == 37) {
+    if (keyCode === 37) {
       return this.game.getElementsByTagName('IMG')[this.left]
-        .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'
+        .getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif'
     }
-    if (keyCode == 38) {
+    if (keyCode === 38) {
       return this.game.getElementsByTagName('IMG')[this.up]
-        .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'
+        .getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif'
     }
-    if (keyCode == 40) {
+    if (keyCode === 40) {
       return this.game.getElementsByTagName('IMG')[this.down]
-        .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'
+        .getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif'
     }
-    if (keyCode == 39) {
+    if (keyCode === 39) {
       return this.game.getElementsByTagName('IMG')[this.right]
-        .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'
+        .getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif'
     }
   }
 
   // 8446b401dfc2e12f42aba1874e6f4bb4.gif box
   moveBox (keyCode) {
-    if (keyCode == 37) {
+    if (keyCode === 37) {
       this.game.getElementsByTagName('IMG')[this.left - 1]
         .setAttribute('src', '8446b401dfc2e12f42aba1874e6f4bb4.gif')
     }
-    if (keyCode == 38) {
+    if (keyCode === 38) {
       this.game.getElementsByTagName('IMG')[this.up - 19]
         .setAttribute('src', '8446b401dfc2e12f42aba1874e6f4bb4.gif')
     }
-    if (keyCode == 39) {
+    if (keyCode === 39) {
       this.game.getElementsByTagName('IMG')[this.right + 1]
         .setAttribute('src', '8446b401dfc2e12f42aba1874e6f4bb4.gif')
     }
-    if (keyCode == 40) {
+    if (keyCode === 40) {
       this.game.getElementsByTagName('IMG')[this.down + 19]
         .setAttribute('src', '8446b401dfc2e12f42aba1874e6f4bb4.gif')
     }
@@ -195,90 +196,58 @@ export default class sokobanGame {
     this.up = this.playerPosition - 19
   }
 
-  // 8446b401dfc2e12f42aba1874e6f4bb4.gif box
-  // 49a475d810a853434f000b535f9e4382.gif ground
-  // d77480fbbd22de843db212182bcd9e02.gif wall
-  // 6d333f4e3a314241695c33685e333d97.gif goal
+  /**
+   *    8446b401dfc2e12f42aba1874e6f4bb4.gif box
+   *    49a475d810a853434f000b535f9e4382.gif ground
+   *    d77480fbbd22de843db212182bcd9e02.gif wall
+   *    6d333f4e3a314241695c33685e333d97.gif goal
+   * @param keyCode
+   * @returns {boolean}
+   */
   isBoxAndWall (keyCode) {
-    if (keyCode == 37) {
-      if ((this.game.getElementsByTagName('IMG')[this.left]
-          .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
-        (this.game.getElementsByTagName('IMG')[this.left - 1]
-          .getAttribute('src') == 'd77480fbbd22de843db212182bcd9e02.gif')) {
+    if (keyCode === 37) {
+      if ((this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
+        (this.game.getElementsByTagName('IMG')[this.left - 1].getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif')) {
         return true
       } else return false
     }
-    if (keyCode == 38) {
-      if ((this.game.getElementsByTagName('IMG')[this.up]
-          .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
-        (this.game.getElementsByTagName('IMG')[this.up - 19]
-          .getAttribute('src') == 'd77480fbbd22de843db212182bcd9e02.gif')) {
+    if (keyCode === 38) {
+      if ((this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
+        (this.game.getElementsByTagName('IMG')[this.up - 19].getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif')) {
         return true
       } else return false
     }
-    if (keyCode == 39) {
-      if ((this.game.getElementsByTagName('IMG')[this.right]
-          .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
-        (this.game.getElementsByTagName('IMG')[this.right + 1]
-          .getAttribute('src') == 'd77480fbbd22de843db212182bcd9e02.gif')) {
+    if (keyCode === 39) {
+      if ((this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
+        (this.game.getElementsByTagName('IMG')[this.right + 1].getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif')) {
         return true
       } else return false
     }
-    if (keyCode == 40) {
-      if ((this.game.getElementsByTagName('IMG')[this.down]
-          .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
-        (this.game.getElementsByTagName('IMG')[this.down + 19]
-          .getAttribute('src') == 'd77480fbbd22de843db212182bcd9e02.gif')) {
+    if (keyCode === 40) {
+      if ((this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
+        (this.game.getElementsByTagName('IMG')[this.down + 19].getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif')) {
         return true
       }
     }
   }
 
   isWallOrTwoBoxes (keyCode) {
-    if (keyCode == '38') {
-      // this for wall
-      return (this.game.getElementsByTagName('IMG')[this.up]
-          .getAttribute('src') === ('d77480fbbd22de843db212182bcd9e02.gif'))
-        // this for two boxes
-        || (this.game.getElementsByTagName('IMG')[this.up]
-            .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'
-          &
-          this.game.getElementsByTagName('IMG')[this.up - 19]
-            .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')
-    } else if (keyCode == '40') {
-      // this for wall
-      return (this.game.getElementsByTagName('IMG')[this.down]
-          .getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif')
-        // this for two boxes
-        || (this.game.getElementsByTagName('IMG')[this.down]
-            .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'
-          &
-          this.game.getElementsByTagName('IMG')[this.down + 19]
-            .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')
-    } else if (keyCode == '37') {
-      // this for wall
-      return (this.game.getElementsByTagName('IMG')[this.left]
-          .getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif')
-        // this for two boxes
-        || (this.game.getElementsByTagName('IMG')[this.left]
-            .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'
-          &
-          this.game.getElementsByTagName('IMG')[this.left - 1]
-            .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')
-    } else if (keyCode == '39') {
-      // this for wall
-      return (this.game.getElementsByTagName('IMG')[this.right]
-          .getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif')
-        // this for two boxes
-        || (this.game.getElementsByTagName('IMG')[this.right]
-            .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'
-          &
-          this.game.getElementsByTagName('IMG')[this.right + 1]
-            .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')
+    if (keyCode === 38) {
+      return (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === ('d77480fbbd22de843db212182bcd9e02.gif')) ||
+        (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif' &
+          this.game.getElementsByTagName('IMG')[this.up - 19].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif')
+    } else if (keyCode === 40) {
+      return (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif') ||
+        (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif' &
+          this.game.getElementsByTagName('IMG')[this.down + 19].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif')
+    } else if (keyCode === 37) {
+      return (this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif') ||
+        (this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif' &
+          this.game.getElementsByTagName('IMG')[this.left - 1].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif')
+    } else if (keyCode === 39) {
+      return (this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === 'd77480fbbd22de843db212182bcd9e02.gif') ||
+        (this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif' &
+          this.game.getElementsByTagName('IMG')[this.right + 1].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif')
     }
-  }
-
-  checkGoal () {
-
   }
 }

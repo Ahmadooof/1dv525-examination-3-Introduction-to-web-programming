@@ -1,5 +1,4 @@
 export default class chat {
-
   /**
    *
    * @param container
@@ -51,31 +50,31 @@ export default class chat {
       this.messageDiv.className = 'container'
       this.showMessageDiv.appendChild(this.messageDiv)
     }
-
     /**
      * Send messages to the server
      */
-    this.textAreaDiv.addEventListener('keypress',  (event) => {
+    this.textAreaDiv.addEventListener('keypress', (event) => {
       this.myName = localStorage.getItem('username')
       if (event.keyCode === 13) {
         this.messageJsToServer = {
           type: 'message',
           data: event.target.value,
           username: this.myName,
-          key:'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
+          key: 'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
         }
         this.sendJsonMessage = JSON.stringify(this.messageJsToServer)
-         this.socket.send(this.sendJsonMessage)
+        this.socket.send(this.sendJsonMessage)
       }
     })
   }
+
   /**
    * adding "add userName" button, adding textbox to set username
    * adding "ok" button to take this name and store it in local storage.
    * @param myWindow
    */
   addUserName (myWindow) {
-    let addUserName = document.createElement('button')
+    const addUserName = document.createElement('button')
     addUserName.innerText = 'Add Username'
     addUserName.className = 'changeNameButton'
     addUserName.style.backgroundColor = '#4ca76c'
@@ -83,11 +82,11 @@ export default class chat {
     myWindow.div.firstElementChild.appendChild(addUserName)
     addUserName.addEventListener('click', (event) => {
       addUserName.remove()
-      let textBox = document.createElement('input')
+      const textBox = document.createElement('input')
       textBox.placeholder = 'Enter UserName'
       textBox.className = 'UserNameTextBox'
       myWindow.div.firstElementChild.appendChild(textBox)
-      let buttonOk = document.createElement('button')
+      const buttonOk = document.createElement('button')
       buttonOk.innerText = 'OK'
       buttonOk.className = 'buttonOk'
       myWindow.div.firstElementChild.appendChild(buttonOk)
@@ -109,17 +108,17 @@ export default class chat {
    * @param myWindow
    */
   changeNameProcess (myWindow) {
-    let changeNameButton = document.createElement('button')
+    const changeNameButton = document.createElement('button')
     changeNameButton.innerText = 'Change Username'
     changeNameButton.className = 'changeNameButton'
     myWindow.div.firstElementChild.appendChild(changeNameButton)
     changeNameButton.addEventListener('click', (event) => {
       changeNameButton.remove()
-      let textBox = document.createElement('input')
+      const textBox = document.createElement('input')
       textBox.placeholder = 'Enter UserName'
       textBox.className = 'UserNameTextBox'
       myWindow.div.firstElementChild.appendChild(textBox)
-      let buttonOk = document.createElement('button')
+      const buttonOk = document.createElement('button')
       buttonOk.innerText = 'OK'
       buttonOk.className = 'buttonOk'
       myWindow.div.firstElementChild.appendChild(buttonOk)
@@ -141,11 +140,10 @@ export default class chat {
   isUserNameExist () {
     this.myName = localStorage.getItem('username')
     console.log(this.myName)
-    if (this.myName === null || this.myName === "") {
+    if (this.myName === null || this.myName === '') {
       return false
     } else {
       return true
     }
   }
-
 }
