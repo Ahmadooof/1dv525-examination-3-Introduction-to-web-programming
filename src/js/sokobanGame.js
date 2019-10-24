@@ -67,7 +67,7 @@ export default class sokobanGame {
   // keycode : (38 up), (37 left), (39 right), (40 down)
   start () {
     window.onkeydown = (key) => {
-      if (this.isWallOrTwoBoxesOrBoxWall(key.keyCode)) {
+      if (this.isWallOrTwoBoxes(key.keyCode) || this.isBoxAndWall(key.keyCode)) {
         return
       }
       switch (key.keyCode) {
@@ -194,16 +194,46 @@ export default class sokobanGame {
     this.up = this.playerPosition - 19
   }
 
-  checkBoxAndWall () {
-
-  }
-
   // 8446b401dfc2e12f42aba1874e6f4bb4.gif box
-
   // 49a475d810a853434f000b535f9e4382.gif ground
   // d77480fbbd22de843db212182bcd9e02.gif wall
   // 6d333f4e3a314241695c33685e333d97.gif goal
-  isWallOrTwoBoxesOrBoxWall (keyCode) {
+  isBoxAndWall (keyCode) {
+    if (keyCode == 37) {
+      if ((this.game.getElementsByTagName('IMG')[this.left]
+          .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
+        (this.game.getElementsByTagName('IMG')[this.left - 1]
+          .getAttribute('src') == 'd77480fbbd22de843db212182bcd9e02.gif')) {
+        return true
+      } else return false
+    }
+    if (keyCode == 38) {
+      if ((this.game.getElementsByTagName('IMG')[this.up]
+          .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
+        (this.game.getElementsByTagName('IMG')[this.up - 19]
+          .getAttribute('src') == 'd77480fbbd22de843db212182bcd9e02.gif')) {
+        return true
+      } else return false
+    }
+    if (keyCode == 39) {
+      if ((this.game.getElementsByTagName('IMG')[this.right]
+          .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
+        (this.game.getElementsByTagName('IMG')[this.right + 1]
+          .getAttribute('src') == 'd77480fbbd22de843db212182bcd9e02.gif')) {
+        return true
+      } else return false
+    }
+    if (keyCode == 40) {
+      if ((this.game.getElementsByTagName('IMG')[this.down]
+          .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif') &
+        (this.game.getElementsByTagName('IMG')[this.down + 19]
+          .getAttribute('src') == 'd77480fbbd22de843db212182bcd9e02.gif')) {
+        return true
+      }
+    }
+  }
+
+  isWallOrTwoBoxes (keyCode) {
     if (keyCode == '38') {
       // this for wall
       return (this.game.getElementsByTagName('IMG')[this.up]
@@ -214,8 +244,6 @@ export default class sokobanGame {
           &
           this.game.getElementsByTagName('IMG')[this.up - 19]
             .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')
-      // this for box and wall
-
     } else if (keyCode == '40') {
       // this for wall
       return (this.game.getElementsByTagName('IMG')[this.down]
@@ -226,8 +254,6 @@ export default class sokobanGame {
           &
           this.game.getElementsByTagName('IMG')[this.down + 19]
             .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')
-      // this for box and wall
-
     } else if (keyCode == '37') {
       // this for wall
       return (this.game.getElementsByTagName('IMG')[this.left]
@@ -238,8 +264,6 @@ export default class sokobanGame {
           &
           this.game.getElementsByTagName('IMG')[this.left - 1]
             .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')
-      // this for box and wall
-
     } else if (keyCode == '39') {
       // this for wall
       return (this.game.getElementsByTagName('IMG')[this.right]
@@ -251,14 +275,6 @@ export default class sokobanGame {
           this.game.getElementsByTagName('IMG')[this.right + 1]
             .getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')
     }
-  }
-
-  checkGround () {
-
-  }
-
-  checkTwoBoxes () {
-
   }
 
   checkGoal () {
