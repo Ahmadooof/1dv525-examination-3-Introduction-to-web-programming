@@ -115,19 +115,19 @@ export default class sokobanGame {
    */
   isPlayerWalkOnGoal () {
     if (
-      (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') == '6d333f4e3a314241695c33685e333d97.gif') |
-      (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') == '6d333f4e3a314241695c33685e333d97.gif') |
-      ((this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') == '6d333f4e3a314241695c33685e333d97.gif') &
-        (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')) |
-      ((this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') == '6d333f4e3a314241695c33685e333d97.gif') &
-        (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')) |
-      ((this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') == '6d333f4e3a314241695c33685e333d97.gif') &
-        (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif')) |
-      ((this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') == '6d333f4e3a314241695c33685e333d97.gif') &
-        (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') == '8446b401dfc2e12f42aba1874e6f4bb4.gif'))
-    )
+      (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === '6d333f4e3a314241695c33685e333d97.gif') |
+      (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === '6d333f4e3a314241695c33685e333d97.gif') |
+      ((this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === '6d333f4e3a314241695c33685e333d97.gif') &
+        (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif')) |
+      ((this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === '6d333f4e3a314241695c33685e333d97.gif') &
+        (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif')) |
+      ((this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === '6d333f4e3a314241695c33685e333d97.gif') &
+        (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif')) |
+      ((this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === '6d333f4e3a314241695c33685e333d97.gif') &
+        (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === '8446b401dfc2e12f42aba1874e6f4bb4.gif'))
+    ) {
       return true
-    else return false
+    } else return false
   }
 
   checkIfBoxAround (keyCode) {
