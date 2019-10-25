@@ -44,24 +44,49 @@ a {
 }
 
 .changeNameButton {
-    background-color: #4c75a7 !important;
+    background-color: #31547f !important;
     border: none;
     color: white;
-    padding: 11px 42px;
+    padding: 11px 4px !important;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 13px;
+    border-radius: 16px;
+}
+.representWindow{
+    color: white;
+    width: 45px;
+    margin-top: 10px;
+    /* margin-left: 135px; */
+    /* margin: auto; */
+    float: right;
 }
 
+.representWindowMemory{
+    color: white;
+    width: 45px;
+    margin-top: 10px;
+    /* margin-left: 135px; */
+    /* margin: auto; */
+    float: left;
+}
 .UserNameTextBox{
-    width: 130px;
+    width: 102px;
     height: 31px;
+}
+
+.sokobanGameTitle{
+    color: white;
+    margin-top: 10px;
+    /* margin-left: 135px; */
+    /* margin: auto; */
+    float: left;
 }
 
 .buttonOk{
     height: 37px;
-    width: 59px;
+    width: 41px;
     border: none;
     background-color: #be5b6e;
     border-radius: 25px;

@@ -42,6 +42,10 @@ export default class sokobanGame {
     this.container.appendChild(this.game)
 
     window.div.classList.add('sokobanWindow')
+    const divRepresentWindow = document.createElement('div')
+    divRepresentWindow.textContent = 'Sokoban Game'
+    divRepresentWindow.className = 'sokobanGameTitle'
+    window.div.firstElementChild.appendChild(divRepresentWindow)
   }
 
   printMap (allImages, tileMap) {

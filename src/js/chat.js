@@ -22,6 +22,10 @@ export default class chat {
     this.showMessageDiv = this.div.childNodes[1]
     this.textAreaDiv = this.div.childNodes[5]
 
+    const divRepresentWindow = document.createElement('div')
+    divRepresentWindow.textContent = 'Chat'
+    divRepresentWindow.className = 'representWindow'
+    myWindow.div.firstElementChild.appendChild(divRepresentWindow)
     // let configJSON = JSON.stringify(configJS)
 
     /**

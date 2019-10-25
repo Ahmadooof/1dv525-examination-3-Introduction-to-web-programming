@@ -1,11 +1,16 @@
 export default class memoryGame {
-  constructor (rows, columns, container) {
+  constructor (rows, columns, container, myWindow) {
     this.container = document.getElementById(container)
     this.memoryDiv = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild // this is memory div
     this.div = document.importNode(this.memoryDiv, false)
     this.tiles = this.shuffleArray(rows, columns)
     this.createImages(rows, columns, this.memoryDiv, this.div)
     this.container.appendChild(this.div)
+
+    const divRepresentWindow = document.createElement('div')
+    divRepresentWindow.textContent = 'MemoryGame'
+    divRepresentWindow.className = 'representWindowMemory'
+    myWindow.div.firstElementChild.appendChild(divRepresentWindow)
   }
 
   createImages (rows, columns, template, div) {
