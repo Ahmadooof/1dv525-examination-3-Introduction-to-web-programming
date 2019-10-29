@@ -45,15 +45,9 @@ export default class chat {
      * @param event
      */
     this.socket.onmessage = (event) => {
-      this.messageDiv = document.createElement('div')
-      this.message = event.data
-      this.message = JSON.parse(this.message)
-      this.strangerUserName = this.message.username
-      this.data = this.message.data
-      this.messageDiv.innerHTML = this.strangerUserName + ':' + '<br>' + this.data
-      this.messageDiv.className = 'container'
-      this.showMessageDiv.appendChild(this.messageDiv)
+      this.onEachMessageProcess(event)
     }
+
     /**
      * Send messages to the server
      */
@@ -70,6 +64,21 @@ export default class chat {
         this.socket.send(this.sendJsonMessage)
       }
     })
+  }
+
+  /**
+   * Receive messages from server
+   * @param event
+   */
+  onEachMessageProcess (event) {
+    this.messageDiv = document.createElement('div')
+    this.message = event.data
+    this.message = JSON.parse(this.message)
+    this.strangerUserName = this.message.username
+    this.data = this.message.data
+    this.messageDiv.innerHTML = this.strangerUserName + ':' + '<br>' + this.data
+    this.messageDiv.className = 'container'
+    this.showMessageDiv.appendChild(this.messageDiv)
   }
 
   /**

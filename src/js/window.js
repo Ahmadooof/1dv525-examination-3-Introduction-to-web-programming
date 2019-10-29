@@ -15,6 +15,7 @@ export default class window {
 
   /**
    * on mouseDown of window => hide all windows which on the screen unless the window which we click
+   *
    * @param event
    */
   mouseDown (event) {
@@ -31,6 +32,10 @@ export default class window {
     this.isDown = false
   }
 
+  /**
+   * on mouse down and move => update the corrdinates for the div
+   * @param event
+   */
   mouseMove (event) {
     if (this.isDown) {
       this.mousePosition = {

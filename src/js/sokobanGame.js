@@ -23,6 +23,11 @@ export default class sokobanGame {
       ]
     }
 
+    /**
+     * these are the first positions for the player on the array and what up down left right of
+     * the character.
+     * @type {number}
+     */
     this.playerPosition = 220
     this.up = this.playerPosition - 19
     this.down = this.playerPosition + 19
@@ -48,6 +53,11 @@ export default class sokobanGame {
     window.div.firstElementChild.appendChild(divRepresentWindow)
   }
 
+  /**
+   * (0 = box) , (1 = goal), (2 = ground), (3 = person), (4 = wall)
+   * @param allImages
+   * @param tileMap
+   */
   printMap (allImages, tileMap) {
     for (let row = 0; row < tileMap.row; row++) {
       for (let column = 0; column < tileMap.column; column++) {
@@ -130,6 +140,11 @@ export default class sokobanGame {
     } else return false
   }
 
+  /**
+   * if box around the character before moving
+   * @param keyCode
+   * @returns {boolean}
+   */
   checkIfBoxAround (keyCode) {
     if (keyCode === 37) {
       return this.game.getElementsByTagName('IMG')[this.left]
@@ -150,6 +165,10 @@ export default class sokobanGame {
   }
 
   // 8446b401dfc2e12f42aba1874e6f4bb4.gif box
+  /**
+   * moving the box by changing the img src
+   * @param keyCode
+   */
   moveBox (keyCode) {
     if (keyCode === 37) {
       this.game.getElementsByTagName('IMG')[this.left - 1]
@@ -169,6 +188,9 @@ export default class sokobanGame {
     }
   }
 
+  /**
+   * if player on goal then change the goal image with character image else move on ground
+   */
   moveUp () {
     if (this.isPlayerWalkOnGoal()) {
       this.game.getElementsByTagName('IMG')[this.up].setAttribute('src', 'f40d00b9313d29d06c29c675161bb4a8.gif')
@@ -187,6 +209,9 @@ export default class sokobanGame {
     this.right = this.playerPosition + 1
   }
 
+  /**
+   * if player on goal then change the goal image with character image else move on ground
+   */
   moveDown () {
     if (this.isPlayerWalkOnGoal()) {
       this.game.getElementsByTagName('IMG')[this.down].setAttribute('src', 'f40d00b9313d29d06c29c675161bb4a8.gif')
@@ -204,6 +229,9 @@ export default class sokobanGame {
     this.right = this.playerPosition + 1
   }
 
+  /**
+   * if player on goal then change the goal image with character image else move on ground
+   */
   moveLeft () {
     if (this.isPlayerWalkOnGoal()) {
       this.game.getElementsByTagName('IMG')[this.left].setAttribute('src', 'f40d00b9313d29d06c29c675161bb4a8.gif')
@@ -221,6 +249,9 @@ export default class sokobanGame {
     this.up = this.playerPosition - 19
   }
 
+  /**
+   * if player on goal then change the goal image with character image else move on ground
+   */
   moveRight () {
     if (this.isPlayerWalkOnGoal()) {
       this.game.getElementsByTagName('IMG')[this.right].setAttribute('src', 'f40d00b9313d29d06c29c675161bb4a8.gif')
@@ -243,6 +274,9 @@ export default class sokobanGame {
    *    6d333f4e3a314241695c33685e333d97.gif goal
    *    49a475d810a853434f000b535f9e4382.gif ground
    *    d77480fbbd22de843db212182bcd9e02.gif wall
+   *
+   *    if box comes before wall then return true to not move
+   *
    * @param keyCode
    * @returns {boolean}
    */
@@ -273,6 +307,11 @@ export default class sokobanGame {
     }
   }
 
+  /**
+   * if comes wall or two boxes beside each other then return true, to not move.
+   * @param keyCode
+   * @returns {boolean|number}
+   */
   isWallOrTwoBoxes (keyCode) {
     if (keyCode === 38) {
       return (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === ('d77480fbbd22de843db212182bcd9e02.gif')) ||

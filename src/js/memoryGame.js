@@ -13,6 +13,13 @@ export default class memoryGame {
     myWindow.div.firstElementChild.appendChild(divRepresentWindow)
   }
 
+  /**
+   * creating the images for each tile and adding event listener for each
+   * @param rows
+   * @param columns
+   * @param template
+   * @param div
+   */
   createImages (rows, columns, template, div) {
     let turn1
     let turn2
@@ -27,6 +34,13 @@ export default class memoryGame {
         turnTile(tile, index, img, div)
       })
 
+      /**
+       * turn the tile for each click and get the image of that tile
+       * @param tile
+       * @param index
+       * @param img
+       * @param myWindow
+       */
       function turnTile (tile, index, img, myWindow) {
         if (turn2) {
           return
@@ -72,6 +86,12 @@ export default class memoryGame {
     })
   }
 
+  /**
+   * make a shuffle of images
+   * @param rows
+   * @param columns
+   * @returns {[]}
+   */
   shuffleArray (rows, columns) {
     let i
     const arrayShuffle = []
