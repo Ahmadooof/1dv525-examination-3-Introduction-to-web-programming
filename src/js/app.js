@@ -10,6 +10,7 @@ const sokobanGameButton = document.querySelector('#sokoban')
 /**
  * adding memory game object to window object
  */
+
 memoryGameButton.addEventListener('click', function () {
   const myWindow = new Window('.windowContainer')
   const memoryGame = new MemoryGame(4, 4, 'memoryContainer', myWindow)
@@ -33,3 +34,18 @@ sokobanGameButton.addEventListener('click', function () {
   const sokobanObj = new SokobanGame('.skoboanContainer', myWindow)
   myWindow.div.appendChild(sokobanObj.game)
 })
+
+/**
+ * remove all windows from screen
+ *
+ */
+function removeWindows () {
+  const windows = document.querySelectorAll('.window')
+  windows.forEach((window) => {
+    window.remove()
+  })
+}
+
+memoryGameButton.addEventListener('dblclick', removeWindows)
+chatButton.addEventListener('dblclick', removeWindows)
+sokobanGameButton.addEventListener('dblclick', removeWindows)
