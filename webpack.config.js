@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: 'build.js',
     // path: path.resolve(__dirname, 'dist')
-    path: '/1dv525-examination-3-Introduction-to-web-programming'
+    publicPath: '/1dv525-examination-3-Introduction-to-web-programming/'
   },
   // devServer: {
   //   contentBase: path.join(__dirname, 'src'),
