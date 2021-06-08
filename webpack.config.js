@@ -10,8 +10,8 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'src'),
-    port: 443,
-    public: 'Ahmadooof/1dv525-examination-3-Introduction-to-web-programming',
+    port: 4000,
+    public: 'localhost',
     watchContentBase: true
   },
   devtool: 'cheap-eval-source-map',

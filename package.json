@@ -15,7 +15,6 @@
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.11.2"
   },
-  
   "scripts": {
     "debug": "webpack-dev-server",
     "start": "webpack-dev-server",
@@ -26,5 +25,23 @@
     "env": {
       "browser": true
     }
-  }
+  },
+  "name": "1dv525-examination-3-introduction-to-web-programming",
+  "description": "This is the assignment repo for the second assignment in the course.",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmadooof/1dv525-examination-3-Introduction-to-web-programming.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "ahmad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahmadooof/1dv525-examination-3-Introduction-to-web-programming/issues"
+  },
+  "homepage": "https://github.com/Ahmadooof/1dv525-examination-3-Introduction-to-web-programming#readme"
 }
