@@ -19,7 +19,7 @@
     "debug": "webpack-dev-server",
     "start": "webpack-dev-server",
     "build": "webpack",
-    "deploy": "gh-pages -d"
+    "deploy": "gh-pages -d src"
   },
   "standard": {
     "env": {
