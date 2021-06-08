@@ -12,9 +12,10 @@
     "standard-loader": "^6.0.1",
     "style-loader": "^0.23.0",
     "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.1"
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.11.2"
   },
-  "bin": {},
+  
   "scripts": {
     "debug": "webpack-dev-server",
     "start": "webpack-dev-server",
@@ -25,8 +26,5 @@
     "env": {
       "browser": true
     }
-  },
-  "devDependencies": {
-    "webpack-dev-server": "^3.11.2"
   }
 }
