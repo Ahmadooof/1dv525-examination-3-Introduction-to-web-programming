@@ -1,70 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="description" content="">
-        <script type="module" src="js/app.js"></script>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <script type="module" src="js/app.js"></script>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <div class="sidebar">
-            <a id="memory" href="#"></a>
-            <a id="chat" href="#"></a>
-            <a id="sokoban" href="#"></a>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <a id="memory" href="#"></a>
+      <a id="chat" href="#"></a>
+      <a id="sokoban" href="#"></a>
+    </div>
+    <div class="textDescription">
+      <h2>
+            Introdction to web programming 
+      </h2>
+      <p>This done as individual assignment with Webpack js.</p>
+      <p>Please Note that chat is not working becuase of web socket is turned off.</p>
+      <p>For sokoban game please use arrow keys to move.</p>
+    </div>
+
+    <div class="windowContainer">
+      <template>
+        <div class="window">
+          <div class="navWindow">
+            <button class="buttonX">X</button>
+          </div>
         </div>
+      </template>
+    </div>
 
-        <div class="windowContainer">
-            <template>
-                <div class="window">
-                    <div class="navWindow">
-                        <button class="buttonX">X</button>
-                    </div>
-                </div>
-            </template>
+    <div id="memoryContainer">
+      <template>
+        <div class="memory">
+          <a href="#">
+            <img src="image/memoryGame/0.png" alt="memoryImg" />
+          </a>
         </div>
+      </template>
+    </div>
 
-        <div id="memoryContainer">
-            <template>
-                <div class="memory">
-                    <a href="#">
-                        <img src="image/memoryGame/0.png" alt="memoryImg"/>
-                    </a>
-                </div>
-            </template>
+    <div class="chatContainer">
+      <template>
+        <div class="chat">
+          <div class="showMessages">Messages</div>
+          <div class="MyName"></div>
+          <div class="text">
+            <textarea class="sendToServer"></textarea>
+          </div>
         </div>
+      </template>
+    </div>
 
-        <div class="chatContainer">
-            <template>
-                <div class="chat">
-                    <div class="showMessages">
-                        Messages
-                    </div>
-                    <div class="MyName">
-
-                    </div>
-                    <div class="text">
-                        <textarea class="sendToServer"></textarea>
-                    </div>
-                </div>
-            </template>
+    <div class="skoboanContainer">
+      <template>
+        <div class="game">
+          <img
+            src="image/sokobanGame/box.gif"
+            alt="sokobanImg"
+            width="30"
+            height="30"
+          />
+          <img
+            src="image/sokobanGame/goal.gif"
+            alt="sokobanImg"
+            width="30"
+            height="30"
+          />
+          <img
+            src="image/sokobanGame/ground.gif"
+            alt="sokobanImg"
+            width="30"
+            height="30"
+          />
+          <img
+            src="image/sokobanGame/person.gif"
+            alt="sokobanImg"
+            width="30"
+            height="30"
+          />
+          <img
+            src="image/sokobanGame/wall.gif"
+            alt="sokobanImg"
+            width="30"
+            height="30"
+          />
         </div>
+      </template>
+    </div>
 
-        <div class="skoboanContainer">
-            <template>
-                <div class="game">
-                    <img src="image/sokobanGame/box.gif" alt="sokobanImg" width="30" height="30"/>
-                    <img src="image/sokobanGame/goal.gif" alt="sokobanImg" width="30" height="30"/>
-                    <img src="image/sokobanGame/ground.gif" alt="sokobanImg" width="30" height="30"/>
-                    <img src="image/sokobanGame/person.gif" alt="sokobanImg" width="30" height="30"/>
-                    <img src="image/sokobanGame/wall.gif" alt="sokobanImg" width="30" height="30"/>
-                </div>
-            </template>
-        </div>
-
-        <script nomodule src="build.js"></script>
-    </body>
+    <script nomodule src="build.js"></script>
+  </body>
 </html>

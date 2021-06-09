@@ -14,7 +14,7 @@ export default class chat {
     this.div = document.importNode(this.chatDiv, true)
     this.container.appendChild(this.div)
 
-    this.socket = new WebSocket('ws://vhost3.lnu.se:20080/socket/')
+    // this.socket = new WebSocket('ws://vhost3.lnu.se:20080/socket/')
 
     this.myName = localStorage.getItem('username')
 
@@ -44,9 +44,9 @@ export default class chat {
      * Receive messages from server
      * @param event
      */
-    this.socket.onmessage = (event) => {
-      this.onEachMessageProcess(event)
-    }
+    // this.socket.onmessage = (event) => {
+    //   this.onEachMessageProcess(event)
+    // }
 
     /**
      * Send messages to the server
@@ -61,7 +61,7 @@ export default class chat {
           key: 'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
         }
         this.sendJsonMessage = JSON.stringify(this.messageJsToServer)
-        this.socket.send(this.sendJsonMessage)
+        // this.socket.send(this.sendJsonMessage)
       }
     })
   }

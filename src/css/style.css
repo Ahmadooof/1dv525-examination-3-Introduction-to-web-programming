@@ -12,6 +12,16 @@
     background-color: #73ac7859;
 }
 
+.textDescription{
+    float: left;
+    padding: 4rem;
+    /* margin-left: 125px; */
+    background-color: #6594cd;
+    margin: 50vh 0vh 0vh 10vh;
+    border-radius: 25px;
+    color: white;
+}
+
 .container {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
