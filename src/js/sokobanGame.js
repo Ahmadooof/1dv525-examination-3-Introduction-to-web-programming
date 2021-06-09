@@ -1,7 +1,7 @@
 // *    8446b401dfc2e12f42aba1874e6f4bb4.gif        alt = image/sokobanGame/box.gif
 // *    6d333f4e3a314241695c33685e333d97.gif        alt = image/sokobanGame/goal.gif
 // *    49a475d810a853434f000b535f9e4382.gif        alt = image/sokobanGame/ground.gif
-// *    d77480fbbd22de843db212182bcd9e02.gif        alt = image/sokobanGame/wallImage.gif
+// *    d77480fbbd22de843db212182bcd9e02.gif        alt = image/sokobanGame/wall.gif
 //      f40d00b9313d29d06c29c675161bb4a8.gif        alt = image/sokobanGame/person.gif
 // image/sokobanGame/ground.gif
 
@@ -96,7 +96,6 @@ export default class sokobanGame {
       if (this.isWallOrTwoBoxes(key.keyCode) || this.isBoxAndWall(key.keyCode)) {
         return
       }
-      console.log(this.allImages);
       switch (key.keyCode) {
 
         case 38:
@@ -294,25 +293,25 @@ export default class sokobanGame {
   isBoxAndWall(keyCode) {
     if (keyCode === 37) {
       if ((this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === 'image/sokobanGame/box.gif') &
-        (this.game.getElementsByTagName('IMG')[this.left - 1].getAttribute('src') === 'image/sokobanGame/wallImage.gif')) {
+        (this.game.getElementsByTagName('IMG')[this.left - 1].getAttribute('src') === 'image/sokobanGame/wall.gif')) {
         return true
       } else return false
     }
     if (keyCode === 38) {
       if ((this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === 'image/sokobanGame/box.gif') &
-        (this.game.getElementsByTagName('IMG')[this.up - 19].getAttribute('src') === 'image/sokobanGame/wallImage.gif')) {
+        (this.game.getElementsByTagName('IMG')[this.up - 19].getAttribute('src') === 'image/sokobanGame/wall.gif')) {
         return true
       } else return false
     }
     if (keyCode === 39) {
       if ((this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === 'image/sokobanGame/box.gif') &
-        (this.game.getElementsByTagName('IMG')[this.right + 1].getAttribute('src') === 'image/sokobanGame/wallImage.gif')) {
+        (this.game.getElementsByTagName('IMG')[this.right + 1].getAttribute('src') === 'image/sokobanGame/wall.gif')) {
         return true
       } else return false
     }
     if (keyCode === 40) {
       if ((this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === 'image/sokobanGame/box.gif') &
-        (this.game.getElementsByTagName('IMG')[this.down + 19].getAttribute('src') === 'image/sokobanGame/wallImage.gif')) {
+        (this.game.getElementsByTagName('IMG')[this.down + 19].getAttribute('src') === 'image/sokobanGame/wall.gif')) {
         return true
       }
     }
@@ -325,19 +324,19 @@ export default class sokobanGame {
    */
   isWallOrTwoBoxes(keyCode) {
     if (keyCode === 38) {
-      return (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === ('image/sokobanGame/wallImage.gif')) ||
+      return (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === ('image/sokobanGame/wall.gif')) ||
         (this.game.getElementsByTagName('IMG')[this.up].getAttribute('src') === 'image/sokobanGame/box.gif' &
           this.game.getElementsByTagName('IMG')[this.up - 19].getAttribute('src') === 'image/sokobanGame/box.gif')
     } else if (keyCode === 40) {
-      return (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === 'image/sokobanGame/wallImage.gif') ||
+      return (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === 'image/sokobanGame/wall.gif') ||
         (this.game.getElementsByTagName('IMG')[this.down].getAttribute('src') === 'image/sokobanGame/box.gif' &
           this.game.getElementsByTagName('IMG')[this.down + 19].getAttribute('src') === 'image/sokobanGame/box.gif')
     } else if (keyCode === 37) {
-      return (this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === 'image/sokobanGame/wallImage.gif') ||
+      return (this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === 'image/sokobanGame/wall.gif') ||
         (this.game.getElementsByTagName('IMG')[this.left].getAttribute('src') === 'image/sokobanGame/box.gif' &
           this.game.getElementsByTagName('IMG')[this.left - 1].getAttribute('src') === 'image/sokobanGame/box.gif')
     } else if (keyCode === 39) {
-      return (this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === 'image/sokobanGame/wallImage.gif') ||
+      return (this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === 'image/sokobanGame/wall.gif') ||
         (this.game.getElementsByTagName('IMG')[this.right].getAttribute('src') === 'image/sokobanGame/box.gif' &
           this.game.getElementsByTagName('IMG')[this.right + 1].getAttribute('src') === 'image/sokobanGame/box.gif')
     }
