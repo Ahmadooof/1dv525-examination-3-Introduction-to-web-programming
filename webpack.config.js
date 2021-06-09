@@ -6,15 +6,14 @@ module.exports = {
   entry: './src/js/app.js',
   output: {
     filename: 'build.js',
-    // path: path.resolve(__dirname, 'dist')
-    publicPath: '/1dv525-examination-3-Introduction-to-web-programming/'
+    path: path.resolve(__dirname, 'dist')
   },
-  // devServer: {
-  //   contentBase: path.join(__dirname, 'src'),
-  //   port: 4000,
-  //   public: 'localhost:4000',
-  //   watchContentBase: true
-  // },
+  devServer: {
+    contentBase: path.join(__dirname, 'src'),
+    port: 4000,
+    public: 'localhost:4000',
+    watchContentBase: true
+  },
   devtool: 'cheap-eval-source-map',
   module: {
     rules: [
