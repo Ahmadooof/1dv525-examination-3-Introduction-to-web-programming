@@ -1,3 +1,15 @@
+/* styles.css */
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.gameGrid {
+    border-collapse: collapse;
+    border: none;
+  }
+  
+  .gameGrid td {
+    padding: 0;
+  }
+  
 .sidebar {
     height: 100%;
     float: left;
@@ -6,18 +18,22 @@
     padding-top: 16px;
     padding-left: 5px;
     padding-right: 10px;
-
+    height: 100%;
+    width: 100px;
+    left: 0px;
+    background-color: #73ac7859;
+    width: 15%;
+    text-align: center;
     position: fixed;
     top: 0;
     background-color: #73ac7859;
+    font-size: 50px;
 }
 
 .textDescription{
-    float: left;
-    padding: 4rem;
-    /* margin-left: 125px; */
+    float: right;
+    padding: 1rem;
     background-color: #6594cd;
-    margin: 50vh 0vh 0vh 10vh;
     border-radius: 25px;
     color: white;
 }
@@ -32,11 +48,6 @@
     overflow-wrap: break-word;
 }
 
-.sokobanWindow{
-    height: 522px !important;
-    width: 570px !important;
-}
-
 .container::after {
     content: "";
     clear: both;
@@ -48,8 +59,8 @@ a {
 }
 
 .game{
-    width: 585px;
-    height: 520px;
+    width: auto;
+    height: auto;
     line-height: 0;
 }
 
@@ -156,8 +167,6 @@ button{
 .window {
     border: 2px solid darkslategray;
     border-radius: 5px;
-    height: 297px;
-    width: 255px;
     margin-left: 150px;
     margin-top: 40px;
     position: fixed;

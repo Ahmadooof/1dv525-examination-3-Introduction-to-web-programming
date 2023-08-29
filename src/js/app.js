@@ -2,6 +2,8 @@ import MemoryGame from './memoryGame.js'
 import Window from './window.js'
 import Chat from './chat.js'
 import SokobanGame from './sokobanGame.js'
+import '../css/style.css';
+
 
 const memoryGameButton = document.querySelector('#memory')
 const chatButton = document.querySelector('#chat')

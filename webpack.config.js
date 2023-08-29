@@ -5,44 +5,41 @@ module.exports = {
   mode: 'development',
   entry: './src/js/app.js',
   output: {
-    filename: 'build.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: 'bundle.js',
+    // path: path.resolve(__dirname, 'C:/Users/ahmad/OneDrive/Desktop/nginx-1.24.0/dist'),
+    path: path.resolve(__dirname, '/dist'),
+    publicPath: '/'
   },
+  //   output: {
+  //   filename: './src/js/app.js',
+  //   path: path.resolve(__dirname, 'dist'),
+  //   publicPath: '/js/'
+  // },
   devServer: {
-    contentBase: path.join(__dirname, 'src'),
+    historyApiFallback: {
+      index: 'index.html'
+    },
+    static: [
+      { directory: path.join(__dirname, 'src') },
+      { directory: path.join(__dirname, 'dist') }
+    ],
     port: 4000,
-    public: 'localhost:4000',
-    watchContentBase: true
+    watchFiles: ['src/**/*']
   },
-  devtool: 'cheap-eval-source-map',
+  devtool: 'eval-source-map',
   module: {
     rules: [
-      {
-        // set up standard-loader as a preloader
-        enforce: 'pre',
-        test: /\.jsx?$/,
-        loader: 'standard-loader',
-        exclude: /(node_modules)/,
-        options: {
-          // Emit errors instead of warnings (default = false)
-          error: false,
-          // enable snazzy output (default = true)
-          snazzy: true
-        }
-      },
       {
         test: /\.html$/,
         use: [{ loader: 'html-loader' }]
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader'
-        ]
+        test: /\.(png|svg|jpg|gif)$/i,
+        use: ['file-loader']
       }
     ]
   },
@@ -51,7 +48,15 @@ module.exports = {
       template: './src/index.html',
       favicon: './src/favicon.ico',
       filename: 'index.html',
-      inject: false
+      inject: true
     })
   ]
-}
+};
+
+  //on development:
+
+  // output: {
+  //   filename: './src/js/app.js',
+  //   path: path.resolve(__dirname, 'dist'),
+  //   publicPath: '/js/'
+  // },

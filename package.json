@@ -3,23 +3,21 @@
     "node": ">=7.0.0"
   },
   "dependencies": {
-    "gh-pages": "^3.2.0",
-    "css-loader": "^1.0.0",
-    "file-loader": "^2.0.0",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
-    "standard": "*",
-    "standard-loader": "^6.0.1",
-    "style-loader": "^0.23.0",
-    "webpack": "^4.19.1",
-    "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.11.2"
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "file-loader": "^6.2.0",
+    "gh-pages": "^6.0.0",
+    "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.3",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   },
   "scripts": {
     "debug": "webpack-dev-server",
     "start": "webpack-dev-server",
-    "build": "webpack",
-    "deploy": "gh-pages -d src"
+    "build": "webpack"
   },
   "standard": {
     "env": {
@@ -30,7 +28,9 @@
   "description": "This is the assignment repo for the second assignment in the course.",
   "version": "1.0.0",
   "main": "webpack.config.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "^5.88.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ahmadooof/1dv525-examination-3-Introduction-to-web-programming.git"

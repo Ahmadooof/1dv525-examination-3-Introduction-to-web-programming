@@ -1,5 +1,20 @@
+
+import image from '../image/memoryGame/0.png'
+import image1 from '../image/memoryGame/1.png'
+import image2 from '../image/memoryGame/2.png'
+import image3 from '../image/memoryGame/3.png'
+import image4 from '../image/memoryGame/4.png'
+import image5 from '../image/memoryGame/5.png'
+import image6 from '../image/memoryGame/6.png'
+import image7 from '../image/memoryGame/7.png'
+import image8 from '../image/memoryGame/8.png'
+
+
 export default class memoryGame {
   constructor (rows, columns, container, myWindow) {
+
+
+
     this.container = document.getElementById(container)
     this.memoryDiv = document.querySelectorAll('#memoryContainer template')[0].content.firstElementChild // this is memory div
     this.div = document.importNode(this.memoryDiv, false)
@@ -25,10 +40,14 @@ export default class memoryGame {
     let turn2
     let lastTile
     let pairs = 0
+    const img = new Image();
+    img.src = image;
     let tries = 0
     this.tiles.forEach(function (tile, index) {
-      const a = document.importNode(template.firstElementChild, true)
+      const a = document.importNode(img, true)
       div.appendChild(a)
+      
+      // div.appendChild(a)
       a.addEventListener('click', function (event) {
         const img = event.target.nodeName === 'IMG' ? event.target : event.target.firstElementChild
         turnTile(tile, index, img, div)
@@ -45,7 +64,33 @@ export default class memoryGame {
         if (turn2) {
           return
         }
-        img.src = 'image/memoryGame/' + tile + '.png'
+        switch (tile) {
+          case 1:
+            img.src = image1
+            break;
+          case 2:
+            img.src = image2
+            break
+          case 3:
+            img.src = image3
+            break;
+          case 4:
+            img.src = image4
+            break;
+          case 5:
+            img.src = image5
+            break
+          case 6:
+            img.src = image6
+            break;
+          case 7:
+            img.src = image7
+            break;
+          case 8:
+            img.src = image8
+            break;
+        }
+
         if (!turn1) {
           turn1 = img
           lastTile = tile
@@ -70,8 +115,8 @@ export default class memoryGame {
             }, 400)
           } else {
             window.setTimeout(function () {
-              turn1.src = 'image/memoryGame/0.png'
-              turn2.src = 'image/memoryGame/0.png'
+              turn1.src = image
+              turn2.src = image
               turn1 = null
               turn2 = null
             }, 500)

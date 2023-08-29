@@ -26,6 +26,7 @@ export default class chat {
     divRepresentWindow.textContent = 'Chat'
     divRepresentWindow.className = 'representWindow'
     myWindow.div.firstElementChild.appendChild(divRepresentWindow)
+
     // let configJSON = JSON.stringify(configJS)
 
     /**
@@ -113,6 +114,8 @@ export default class chat {
         this.changeNameProcess(myWindow)
       })
     })
+
+    addUserName.click()
   }
 
   /**
